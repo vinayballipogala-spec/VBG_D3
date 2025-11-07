@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import NavBar from './NavBar';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
@@ -1099,31 +1100,8 @@ const Homepage = () => {
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-blue-500/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <img src="/vantage-brilliance.svg" alt="Vantage Brilliance" className="h-7 w-7 mr-2" />
-              <div className="futuristic-heading text-base">VANTAGE BRILLIANCE</div>
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <Link to="/single-screen" className="futuristic-body text-gray-300 hover:text-blue-400 transition-colors text-sm">Live Demo</Link>
-              <Link to="/about" className="futuristic-body text-gray-300 hover:text-blue-400 transition-colors text-sm">About</Link>
-              <Link to="/pricing" className="futuristic-body text-gray-300 hover:text-blue-400 transition-colors text-sm">Pricing</Link>
-              <Link to="/contact" className="futuristic-body text-gray-300 hover:text-blue-400 transition-colors text-sm">Contact</Link>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link 
-                to="/single-screen" 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all hover:neural-glow futuristic-subheading text-sm"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      {/* Navigation - Unified Component */}
+      <NavBar />
 
       {/* Hero Section - CTA Video */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -1146,7 +1124,7 @@ const Homepage = () => {
           
           {/* Particle System */}
           <ParticleSystem count={20} />
-        </div>
+            </div>
         
         {/* System Status - Integrated as Floating Elements (No Box) */}
             <motion.div 
@@ -1172,7 +1150,7 @@ const Homepage = () => {
               <div className="w-2 h-2 rounded-full bg-cyan-400" style={{ boxShadow: '0 0 8px #06b6d4' }} />
               <span className="terminal-font text-[10px] text-cyan-400" style={{ textShadow: '0 0 6px #06b6d4' }}>ACTIVE</span>
             </motion.div>
-              </div>
+            </div>
         </motion.div>
               
         {/* Story Flow: Sequential Animation - 30+ Second Loop (5 Videos) - Transmission Style */}
@@ -1262,14 +1240,14 @@ const Homepage = () => {
                       textClassName=""
                     />
                   </p>
-                </div>
+            </div>
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.div>
+              </motion.div>
 
         {/* BOTTOM LEFT: Black Box AI Problem (Working Level) */}
-        <motion.div 
+              <motion.div 
           key={`chat-bottom-left-${heroCycle}`}
           className="absolute"
           style={{
@@ -1351,7 +1329,7 @@ const Homepage = () => {
                       textClassName=""
                     />
                   </p>
-                </div>
+          </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -1440,14 +1418,14 @@ const Homepage = () => {
                       textClassName=""
                     />
                   </p>
-              </div>
+        </div>
               </motion.div>
             )}
           </AnimatePresence>
         </motion.div>
               
         {/* BOTTOM RIGHT: AI+Human Collaboration Need */}
-              <motion.div 
+            <motion.div 
           key={`chat-bottom-right-${heroCycle}`}
           className="absolute"
           style={{
@@ -1494,9 +1472,9 @@ const Homepage = () => {
                   maxWidth: '280px'
                 }}
                 initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 40 }}
-                transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8 }}
               >
                 <div style={{ padding: '8px 0' }}>
                   <div style={{
@@ -1541,7 +1519,7 @@ const Homepage = () => {
         <div 
           className="absolute left-1/2 z-20"
           style={{ 
-            top: '45%',
+            top: '38%',
             transform: 'translateX(-50%)',
             perspective: '1000px'
           }}
@@ -1662,13 +1640,13 @@ const Homepage = () => {
                 >
                   I connect your data, uncover why, propose options, help you execute, and learn with you—<span style={{ fontWeight: '500', color: '#06b6d4', textShadow: '0 0 5px rgba(6, 182, 212, 0.7)' }}>so every decision gets easier.</span>
                 </p>
-              </div>
-            </motion.div>
-            </motion.div>
           </div>
+            </motion.div>
+            </motion.div>
+              </div>
               
         {/* Bottom-Center: CTA Panel */}
-        <div key={`cta-${heroCycle}`} className="absolute bottom-16 lg:bottom-20 left-1/2 transform -translate-x-1/2 z-10 max-w-xs">
+        <div key={`cta-${heroCycle}`} className="absolute bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-10 max-w-xs">
               <motion.div 
             key={`cta-motion-${heroCycle}`}
             initial={{ opacity: 0, y: 40, x: 30, scale: 0.85, rotate: 1 }}
@@ -1679,20 +1657,12 @@ const Homepage = () => {
           >
             <div className="hud-border bg-black/40 backdrop-blur-sm rounded-lg px-3 py-3">
               <h3 className="futuristic-heading text-sm sm:text-base mb-2 text-cyan-300">Ready to Make Decisions Together?</h3>
-              <div className="flex flex-col gap-2">
                 <Link 
                   to="/single-screen" 
-                  className="hud-border bg-gradient-to-r from-cyan-600/40 to-blue-600/40 hover:from-cyan-600/60 hover:to-blue-600/60 text-white px-4 py-2 rounded-lg font-semibold flex items-center justify-center transition-all hover:neural-glow futuristic-subheading text-xs terminal-font"
+                className="hud-border bg-gradient-to-r from-cyan-600/40 to-blue-600/40 hover:from-cyan-600/60 hover:to-blue-600/60 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center transition-all hover:neural-glow futuristic-subheading text-sm terminal-font"
                 >
-                  Start Journey <ArrowRight className="ml-2 h-3 w-3" />
+                Start Journey <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
-                <Link 
-                  to="/pricing" 
-                  className="hud-border bg-black/40 backdrop-blur-sm border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 px-4 py-2 rounded-lg font-semibold flex items-center justify-center transition-all futuristic-subheading text-xs terminal-font"
-                >
-                  Pricing
-                </Link>
-        </div>
                 </div>
               </motion.div>
         </div>
@@ -1707,7 +1677,7 @@ const Homepage = () => {
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent z-20 pointer-events-none" />
         
         {/* Customer Intelligence Video Background - Unified Treatment */}
-          <motion.div 
+            <motion.div 
           className="absolute inset-0 opacity-25 overflow-hidden z-0"
                 initial={{ opacity: 0 }}
           whileInView={{ opacity: 0.25 }}
@@ -1734,7 +1704,7 @@ const Homepage = () => {
                 </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
               </motion.div>
-        
+
         {/* Neural Network Pattern - Connecting Element */}
         <motion.img
           src="/neuralnetworkpattern.png"
@@ -1748,16 +1718,16 @@ const Homepage = () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
         
         <div className="relative z-10 max-w-7xl mx-auto">
-          <motion.div 
+            <motion.div 
             className="text-center mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
             <h2 className="futuristic-heading text-xl lg:text-2xl mb-2">
               SIX <span className="neural-text">INTELLIGENCE MODULES</span>
-            </h2>
+                </h2>
             <p className="futuristic-body text-xs text-gray-300 max-w-2xl mx-auto">
               Comprehensive intelligence across every major business function.
             </p>
@@ -1794,7 +1764,7 @@ const Homepage = () => {
                           : 'bg-cyan-500/10'
                       }`}>
                         <Icon className={`h-5 w-5 ${isSelected ? 'text-cyan-300' : 'text-cyan-400/60'}`} />
-                      </div>
+              </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between mb-1">
                           <h3 className={`futuristic-subheading text-sm font-semibold ${
@@ -1963,7 +1933,7 @@ const Homepage = () => {
             <p className="futuristic-body text-base text-gray-300 max-w-2xl mx-auto">
               Here's how I help you understand your organization and make better decisions.
             </p>
-            </motion.div>
+          </motion.div>
 
           {/* Falling Comet Animation - Diagonal Path */}
           <div className="absolute inset-0 w-full h-full pointer-events-none z-[2]" style={{ minHeight: '1300px' }}>
@@ -2191,30 +2161,10 @@ const Homepage = () => {
                 ];
                 const pos = positions[index];
                 
-                return (
-                  <motion.div 
-                    key={item.step}
-                    className="absolute z-10"
-                    style={{
-                      left: pos.left,
-                      top: pos.top,
-                      transform: 'translate(-50%, -50%)'
-                    }}
-                    initial={{ opacity: 0, scale: 0.8, x: -50, y: -50 }}
-                    whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-                    viewport={{ once: true }}
-                    animate={{
-                      y: [0, -5, 0]
-                    }}
-                    transition={{
-                      opacity: { duration: 0.8, delay: index * 0.2 },
-                      scale: { duration: 0.8, delay: index * 0.2 },
-                      x: { duration: 0.8, delay: index * 0.2 },
-                      y: { duration: 5 + index, repeat: Infinity, ease: 'easeInOut' }
-                    }}
-                  >
+                const stepContent = (
+                  <>
                     {/* Step Content Container */}
-                    <div className="flex flex-col items-center text-center max-w-[280px]">
+                    <div className={`flex flex-col items-center text-center max-w-[280px] ${index <= 3 ? 'cursor-pointer' : ''}`}>
                       {/* Professional Visual Infographic */}
                       <motion.div
                         className="mb-4"
@@ -2272,7 +2222,7 @@ const Homepage = () => {
                       <div className="space-y-2">
                         <h3 className="futuristic-subheading text-lg text-white mb-1">
                           {item.title}
-                        </h3>
+                          </h3>
                         <div className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-blue-500/30 mb-2">
                           <span className="text-xs text-blue-300 font-semibold">{item.highlight}</span>
                         </div>
@@ -2284,344 +2234,186 @@ const Homepage = () => {
                       {/* Timeline Dot */}
                       <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full border-2 border-black shadow-xl z-10" />
               </div>
-            </motion.div>
+                  </>
+                );
+
+                // Make Step 1 and Step 2 clickable
+                if (index === 0) {
+                  return (
+                    <Link 
+                      key={item.step} 
+                      to="/data-ingestion" 
+                      className="absolute z-10"
+                      style={{
+                        left: pos.left,
+                        top: pos.top,
+                        transform: 'translate(-50%, -50%)',
+                        textDecoration: 'none'
+                      }}
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8, x: -50, y: -50 }}
+                        whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                        viewport={{ once: true }}
+                        animate={{
+                          y: [0, -5, 0]
+                        }}
+                        transition={{
+                          opacity: { duration: 0.8, delay: index * 0.2 },
+                          scale: { duration: 0.8, delay: index * 0.2 },
+                          x: { duration: 0.8, delay: index * 0.2 },
+                          y: { duration: 5 + index, repeat: Infinity, ease: 'easeInOut' }
+                        }}
+                      >
+                        {stepContent}
+                      </motion.div>
+                    </Link>
+                  );
+                }
+
+                if (index === 1) {
+                  return (
+                    <Link 
+                      key={item.step} 
+                      to="/causal-intelligence" 
+                      className="absolute z-10"
+                      style={{
+                        left: pos.left,
+                        top: pos.top,
+                        transform: 'translate(-50%, -50%)',
+                        textDecoration: 'none'
+                      }}
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8, x: -50, y: -50 }}
+                        whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                        viewport={{ once: true }}
+                        animate={{
+                          y: [0, -5, 0]
+                        }}
+                        transition={{
+                          opacity: { duration: 0.8, delay: index * 0.2 },
+                          scale: { duration: 0.8, delay: index * 0.2 },
+                          x: { duration: 0.8, delay: index * 0.2 },
+                          y: { duration: 5 + index, repeat: Infinity, ease: 'easeInOut' }
+                        }}
+                      >
+                        {stepContent}
+                      </motion.div>
+                    </Link>
+                  );
+                }
+
+                if (index === 2) {
+                  return (
+                    <Link 
+                      key={item.step} 
+                      to="/decision-canvas-detail" 
+                      className="absolute z-10"
+                      style={{
+                        left: pos.left,
+                        top: pos.top,
+                        transform: 'translate(-50%, -50%)',
+                        textDecoration: 'none'
+                      }}
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8, x: -50, y: -50 }}
+                        whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                        viewport={{ once: true }}
+                        animate={{
+                          y: [0, -5, 0]
+                        }}
+                        transition={{
+                          opacity: { duration: 0.8, delay: index * 0.2 },
+                          scale: { duration: 0.8, delay: index * 0.2 },
+                          x: { duration: 0.8, delay: index * 0.2 },
+                          y: { duration: 5 + index, repeat: Infinity, ease: 'easeInOut' }
+                        }}
+                      >
+                        {stepContent}
+                      </motion.div>
+                    </Link>
+                  );
+                }
+
+                if (index === 3) {
+                  return (
+                    <Link 
+                      key={item.step} 
+                      to="/decision-tracking" 
+                      className="absolute z-10"
+                      style={{
+                        left: pos.left,
+                        top: pos.top,
+                        transform: 'translate(-50%, -50%)',
+                        textDecoration: 'none'
+                      }}
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8, x: -50, y: -50 }}
+                        whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                        viewport={{ once: true }}
+                        animate={{
+                          y: [0, -5, 0]
+                        }}
+                        transition={{
+                          opacity: { duration: 0.8, delay: index * 0.2 },
+                          scale: { duration: 0.8, delay: index * 0.2 },
+                          x: { duration: 0.8, delay: index * 0.2 },
+                          y: { duration: 5 + index, repeat: Infinity, ease: 'easeInOut' }
+                        }}
+                      >
+                        {stepContent}
+                      </motion.div>
+                    </Link>
+                  );
+                }
+
+                return (
+                  <motion.div 
+                    key={item.step}
+                    className="absolute z-10"
+                    style={{
+                      left: pos.left,
+                      top: pos.top,
+                      transform: 'translate(-50%, -50%)'
+                    }}
+                    initial={{ opacity: 0, scale: 0.8, x: -50, y: -50 }}
+                    whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                    viewport={{ once: true }}
+                    animate={{
+                      y: [0, -5, 0]
+                    }}
+                    transition={{
+                      opacity: { duration: 0.8, delay: index * 0.2 },
+                      scale: { duration: 0.8, delay: index * 0.2 },
+                      x: { duration: 0.8, delay: index * 0.2 },
+                      y: { duration: 5 + index, repeat: Infinity, ease: 'easeInOut' }
+                    }}
+                  >
+                    {stepContent}
+                  </motion.div>
                 );
               })}
           </div>
-        </div>
-      </section>
-
-      {/* Step 1: Data Ingestion & Connection */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
-        {/* Top Gradient Fade Mask */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent z-20 pointer-events-none" />
-        
-        {/* Data Ingestion Video Background */}
-          <motion.div 
-          className="absolute inset-0 opacity-25 z-0"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.25 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-          viewport={{ amount: 0.2 }}
-        >
-          <video 
-            className="w-full h-full object-cover"
-            autoPlay 
-            muted 
-            loop
-            playsInline
-          >
-            <source src="/Data_Ingestion_Connection_Video_Generation.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
-                      </motion.div>
-        
-        {/* Neural Network Pattern */}
-        <motion.img
-          src="/neuralnetworkpattern.png"
-          alt="Neural Network"
-          className="absolute top-0 left-0 w-full h-full opacity-[0.08] z-[1]"
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-        />
-        
-        {/* Bottom Gradient Fade Mask */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
-
-        <div className="relative z-10 max-w-5xl mx-auto">
-          <motion.div 
-            className="space-y-6"
-            initial={{ opacity: 0, y: 30 }}
+          
+          {/* CTA to Demo Page */}
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <div className="flex items-center justify-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                <Database className="h-6 w-6 text-white" />
-                  </div>
-              <h2 className="futuristic-heading text-3xl lg:text-4xl">
-                Step 1: I Ingest & <span className="neural-text">Connect</span>
-            </h2>
-                </div>
-            
-            <p className="futuristic-body text-lg text-gray-300 leading-relaxed text-center max-w-3xl mx-auto">
-              The foundation of intelligence is comprehensive, real-time data. I continuously connect to 5000+ data sources across your business—CRM, analytics, financial systems, market signals, competitor intelligence.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mt-8">
-              <div className="bg-white/5 rounded-xl p-6 border border-cyan-500/20">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">5000+ Data Sources</h3>
-                <p className="futuristic-body text-sm text-gray-400">Connect to CRM, analytics, financial systems, market signals, competitor intelligence</p>
-                        </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-cyan-500/20">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">Real-Time Sync</h3>
-                <p className="futuristic-body text-sm text-gray-400">Everything syncs automatically, no manual work needed</p>
-                      </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-cyan-500/20">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">Unified Data Layer</h3>
-                <p className="futuristic-body text-sm text-gray-400">All your data becomes one intelligent system</p>
-                    </div>
-              </div>
-            
-            <p className="futuristic-body text-base text-gray-400 pt-4 text-center max-w-2xl mx-auto">
-              Without comprehensive data, you can't see the full picture. I connect everything so you can understand how every part of your organization interacts.
-            </p>
-          </motion.div>
-            </div>
-      </section>
-
-      {/* Step 2: Causal Intelligence */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
-        {/* Top Gradient Fade Mask */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent z-20 pointer-events-none" />
-        
-        {/* Causal Intelligence Video Background */}
-            <motion.div 
-          className="absolute inset-0 opacity-25 z-0"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.25 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-          viewport={{ amount: 0.2 }}
-        >
-          <video 
-            className="w-full h-full object-cover"
-            autoPlay 
-            muted 
-            loop
-            playsInline
-          >
-            <source src="/Causal_Intelligence_Video_Generation.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
-        </motion.div>
-        
-        {/* Neural Network Pattern */}
-        <motion.img
-          src="/neuralnetworkpattern.png"
-          alt="Neural Network"
-          className="absolute top-0 left-0 w-full h-full opacity-[0.08] z-[1]"
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-        />
-        
-        {/* Bottom Gradient Fade Mask */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
-
-        <div className="relative z-10 max-w-5xl mx-auto">
-          <motion.div 
-            className="space-y-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+            <Link
+              to="/demo"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-600/40 to-blue-600/40 hover:from-cyan-600/60 hover:to-blue-600/60 text-white px-8 py-4 rounded-lg font-semibold transition-all hover:neural-glow futuristic-subheading border border-cyan-500/50"
             >
-            <div className="flex items-center justify-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                <Brain className="h-6 w-6 text-white" />
-                    </div>
-              <h2 className="futuristic-heading text-3xl lg:text-4xl">
-                Step 2: I Perform Deep <span className="neural-text">Causal Analysis</span>
-              </h2>
-                  </div>
-                  
-            <p className="futuristic-body text-lg text-gray-300 leading-relaxed text-center max-w-3xl mx-auto">
-              I don't just show correlations. I identify WHY things happen. I analyze millions of data points across your organization to identify true causal relationships. Not correlations—actual causes.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mt-8">
-              <div className="bg-white/5 rounded-xl p-6 border border-purple-500/20">
-                <div className="w-2 h-2 bg-purple-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">Root Cause vs Correlation</h3>
-                <p className="futuristic-body text-sm text-gray-400">Correlation shows what happened together. Causal analysis reveals WHY one thing causes another.</p>
-                  </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-purple-500/20">
-                <div className="w-2 h-2 bg-purple-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">Pattern Recognition</h3>
-                <p className="futuristic-body text-sm text-gray-400">Across millions of data points, I discover hidden insights and organizational misalignments</p>
-                </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-purple-500/20">
-                <div className="w-2 h-2 bg-purple-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">The Deeper Issue</h3>
-                <p className="futuristic-body text-sm text-gray-400">I find systemic problems, not just surface symptoms. I help you fix root issues.</p>
-                </div>
-              </div>
-            
-            <p className="futuristic-body text-base text-gray-400 pt-4 text-center max-w-2xl mx-auto">
-              Without understanding WHY, you're treating symptoms, not causes. I help you fix the root issues.
-            </p>
-            </motion.div>
-        </div>
-      </section>
-
-      {/* Step 3: Decision Canvas */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
-        {/* Top Gradient Fade Mask */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent z-20 pointer-events-none" />
-        
-        {/* Consulting Video Background */}
-            <motion.div 
-          className="absolute inset-0 opacity-10 z-0"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.1 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-          viewport={{ amount: 0.2 }}
-        >
-                <video 
-            className="w-full h-full object-cover"
-                  autoPlay 
-                  muted 
-                  loop
-                  playsInline
-                >
-            <source src="/consulting-transformation.mp4" type="video/mp4" />
-                </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30" />
-            </motion.div>
-
-        {/* Neural Network Pattern */}
-        <motion.img
-          src="/neuralnetworkpattern.png"
-          alt="Neural Network"
-          className="absolute top-0 left-0 w-full h-full opacity-[0.08] z-[1]"
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-        />
-        
-        {/* Bottom Gradient Fade Mask */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
-
-        <div className="relative z-10 max-w-5xl mx-auto">
-            <motion.div 
-            className="space-y-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-            <div className="flex items-center justify-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                <Target className="h-6 w-6 text-white" />
-              </div>
-              <h2 className="futuristic-heading text-3xl lg:text-4xl">
-                Step 3: We Make Decisions <span className="neural-text">Together</span>
-                </h2>
-              </div>
-              
-            <p className="futuristic-body text-lg text-gray-300 leading-relaxed text-center max-w-3xl mx-auto">
-              This is where we collaborate. My causal intelligence meets your judgment. Together, we explore options, test scenarios, and make decisions with confidence.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mt-8">
-              <div className="bg-white/5 rounded-xl p-6 border border-blue-500/20">
-                <div className="w-2 h-2 bg-blue-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">Strategic Decisions</h3>
-                <p className="futuristic-body text-sm text-gray-400">Long-term planning, M&A, transformation</p>
-                  </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-blue-500/20">
-                <div className="w-2 h-2 bg-blue-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">Tactical Decisions</h3>
-                <p className="futuristic-body text-sm text-gray-400">Resource allocation, pricing, campaigns</p>
-              </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-blue-500/20">
-                <div className="w-2 h-2 bg-blue-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">Operational Decisions</h3>
-                <p className="futuristic-body text-sm text-gray-400">Day-to-day, real-time adjustments</p>
-                  </div>
-                </div>
-                
-            <div className="text-center pt-4">
-              <Link 
-                to="/decision-canvas" 
-                className="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold futuristic-subheading group"
-              >
-                Explore Decision Canvas
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform" />
-              </Link>
-                  </div>
+              See Full Product Flow
+              <ArrowRight className="h-5 w-5" />
+            </Link>
           </motion.div>
-                  </div>
-      </section>
-
-      {/* Step 4: Decision Tracking & Learning Loop */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
-        {/* Top Gradient Fade Mask */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent z-20 pointer-events-none" />
-        
-        {/* Decision Tracking Video Background */}
-        <motion.div 
-          className="absolute inset-0 opacity-25 z-0"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.25 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-          viewport={{ amount: 0.2 }}
-        >
-          <video 
-            className="w-full h-full object-cover"
-            autoPlay 
-            muted 
-            loop
-            playsInline
-          >
-            <source src="/Video_Generation_Decision_Tracking_Loop.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
-        </motion.div>
-
-        {/* Neural Network Pattern - Connecting Element */}
-        <motion.img
-          src="/neuralnetworkpattern.png"
-          alt="Neural Network"
-          className="absolute top-0 left-0 w-full h-full opacity-[0.08] z-[1]"
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-        />
-
-        {/* Bottom Gradient Fade Mask */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
-
-        <div className="relative z-10 max-w-5xl mx-auto">
-          <motion.div 
-            className="space-y-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center justify-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
-                <Sparkles className="h-6 w-6 text-white" />
-              </div>
-              <h2 className="futuristic-heading text-3xl lg:text-4xl">
-                Step 4: We Learn From Every <span className="neural-text">Decision</span>
-              </h2>
-                </div>
-                
-            <p className="futuristic-body text-lg text-gray-300 leading-relaxed text-center max-w-3xl mx-auto">
-              Every decision becomes part of your organization's intelligence. I track outcomes, measure actual results vs predictions, and build institutional memory. Your organization gets smarter over time.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mt-8">
-              <div className="bg-white/5 rounded-xl p-6 border border-green-500/20">
-                <div className="w-2 h-2 bg-green-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">Track Outcomes</h3>
-                <p className="futuristic-body text-sm text-gray-400">Every decision is logged with predicted vs. actual outcomes. See what worked, what didn't, and why.</p>
-                  </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-green-500/20">
-                <div className="w-2 h-2 bg-green-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">Institutional Memory</h3>
-                <p className="futuristic-body text-sm text-gray-400">Your organization's decision history becomes intelligence. Patterns emerge. Context builds. You get smarter over time.</p>
-                  </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-green-500/20">
-                <div className="w-2 h-2 bg-green-400 rounded-full mb-3" />
-                <h3 className="futuristic-subheading text-gray-200 mb-2">Continuous Learning</h3>
-                <p className="futuristic-body text-sm text-gray-400">I learn what works for your business specifically. Every decision improves future recommendations. Your competitive advantage grows.</p>
-                </div>
-              </div>
-            </motion.div>
         </div>
       </section>
 
