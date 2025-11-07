@@ -385,12 +385,12 @@ const DataIngestionDetail = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto">
           {/* Conversation Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
             {conversations.map((conv, index) => (
               <motion.button
                 key={conv.id}
                 onClick={() => setActiveConversationIndex(index)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all futuristic-subheading ${
+                className={`px-3 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm rounded-lg font-semibold transition-all futuristic-subheading ${
                   activeConversationIndex === index
                     ? 'bg-gradient-to-r from-cyan-600/40 to-blue-600/40 border border-cyan-500/50 text-white'
                     : 'bg-black/40 border border-cyan-500/20 text-gray-300 hover:border-cyan-500/40'
@@ -417,30 +417,30 @@ const DataIngestionDetail = () => {
           >
             {/* Chat Header */}
             <div 
-              className="p-4 border-b"
+              className="p-3 sm:p-4 border-b"
               style={{ 
                 borderColor: currentConversation.borderColor,
                 background: `linear-gradient(to right, ${currentConversation.headerColor}15, transparent)`
               }}
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 sm:space-x-3">
                   <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                     style={{ 
                       background: `linear-gradient(135deg, ${currentConversation.headerColor}40, ${currentConversation.headerColor}20)`
                     }}
                   >
-                    <MessageCircle className="h-5 w-5" style={{ color: currentConversation.headerColor }} />
+                    <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: currentConversation.headerColor }} />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <div 
-                      className="text-xs font-semibold mb-1"
+                      className="text-[10px] sm:text-xs font-semibold mb-0.5 sm:mb-1"
                       style={{ color: currentConversation.headerColor }}
                     >
                       {currentConversation.header}
                     </div>
-                    <h3 className="futuristic-subheading text-lg text-white">{currentConversation.title}</h3>
+                    <h3 className="futuristic-subheading text-sm sm:text-base lg:text-lg text-white truncate">{currentConversation.title}</h3>
                   </div>
                 </div>
               </div>
@@ -449,7 +449,7 @@ const DataIngestionDetail = () => {
             {/* Chat Messages */}
             <div 
               ref={chatContainerRef}
-              className="p-6 space-y-4 max-h-[500px] overflow-y-auto"
+              className="p-3 sm:p-6 space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[500px] overflow-y-auto"
               style={{ scrollBehavior: 'smooth' }}
             >
               {displayedMessages.map((msg, msgIndex) => (
@@ -461,37 +461,37 @@ const DataIngestionDetail = () => {
                   transition={{ duration: 0.3 }}
                 >
                   {msg.type === 'user' ? (
-                    <div className="max-w-[80%] bg-gray-800/60 text-gray-200 border border-gray-700/40 rounded-lg px-4 py-3 backdrop-blur-sm">
-                      <div className="flex items-center gap-2 mb-2">
+                    <div className="max-w-[90%] sm:max-w-[80%] bg-gray-800/60 text-gray-200 border border-gray-700/40 rounded-lg px-3 sm:px-4 py-2 sm:py-3 backdrop-blur-sm">
+                      <div className="flex items-center gap-2 mb-1 sm:mb-2">
                         <span 
-                          className="text-xs font-semibold"
+                          className="text-[10px] sm:text-xs font-semibold"
                           style={{ color: msg.color }}
                         >
                           {msg.persona} {'>'} {msg.prompt}
                         </span>
                       </div>
-                      <p className="text-sm leading-relaxed" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
+                      <p className="text-xs sm:text-sm leading-relaxed" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
                         {msg.text}
                       </p>
                     </div>
                   ) : msg.type === 'vantage' ? (
-                    <div className="max-w-[80%] bg-gradient-to-br from-cyan-500/70 via-blue-500/60 to-cyan-500/70 text-white border border-cyan-400/30 shadow-lg shadow-cyan-500/15 rounded-lg px-4 py-3 backdrop-blur-sm">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <Bot className="h-4 w-4 text-cyan-200" />
-                        <span className="text-xs font-semibold">VANTAGE BRILLIANCE</span>
-                        <span className="text-xs" style={{ color: msg.color }}>
+                    <div className="max-w-[90%] sm:max-w-[80%] bg-gradient-to-br from-cyan-500/70 via-blue-500/60 to-cyan-500/70 text-white border border-cyan-400/30 shadow-lg shadow-cyan-500/15 rounded-lg px-3 sm:px-4 py-2 sm:py-3 backdrop-blur-sm">
+                      <div className="flex items-center space-x-1 sm:space-x-2 mb-1 sm:mb-2 flex-wrap">
+                        <Bot className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-200" />
+                        <span className="text-[10px] sm:text-xs font-semibold">VANTAGE BRILLIANCE</span>
+                        <span className="text-[10px] sm:text-xs" style={{ color: msg.color }}>
                           {'>'} {msg.prompt}
                         </span>
                       </div>
-                      <p className="text-sm text-cyan-100/90 leading-relaxed mb-3" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
+                      <p className="text-xs sm:text-sm text-cyan-100/90 leading-relaxed mb-2 sm:mb-3" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
                         {msg.text}
                       </p>
                       {msg.metrics && msg.metrics.length > 0 && (
-                        <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-cyan-400/30">
+                        <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-cyan-400/30">
                           {msg.metrics.map((metric, i) => (
-                            <div key={i} className="bg-cyan-500/20 rounded px-3 py-2 border border-cyan-400/30">
-                              <div className="text-sm font-bold text-cyan-100">{metric.value}</div>
-                              <div className="text-xs text-cyan-300/70 mt-1">{metric.label}</div>
+                            <div key={i} className="bg-cyan-500/20 rounded px-2 sm:px-3 py-1.5 sm:py-2 border border-cyan-400/30">
+                              <div className="text-xs sm:text-sm font-bold text-cyan-100">{metric.value}</div>
+                              <div className="text-[10px] sm:text-xs text-cyan-300/70 mt-0.5 sm:mt-1">{metric.label}</div>
                             </div>
                           ))}
                         </div>
@@ -550,8 +550,8 @@ const DataIngestionDetail = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold mb-4 futuristic-heading">A Glimpse of Data Ingestion</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 futuristic-heading">A Glimpse of Data Ingestion</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-4">
               Real-time connections to 5000+ data sources. Unified data layer. Automatic schema mapping.
             </p>
           </motion.div>
@@ -584,7 +584,7 @@ const DataIngestionDetail = () => {
             </div>
 
             {/* Content Grid */}
-            <div className="grid md:grid-cols-3 gap-4 p-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 p-3 sm:p-6">
               {/* Left: Connected Sources */}
               <div className="bg-black/40 rounded-xl p-4 border border-blue-500/20">
                 <div className="flex items-center gap-2 mb-3">

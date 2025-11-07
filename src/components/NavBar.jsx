@@ -1,8 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 const NavBar = () => {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-cyan-500/20" style={{
@@ -27,7 +29,7 @@ const NavBar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo Section - Futuristic */}
-          <Link to="/">
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
             <motion.div 
               className="flex items-center"
               whileHover={{ scale: 1.05 }}
@@ -51,7 +53,7 @@ const NavBar = () => {
                 }}
               />
               <div 
-                className="futuristic-heading text-base"
+                className="futuristic-heading text-sm sm:text-base"
                 style={{
                   background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 30%, #8b5cf6 70%, #a855f7 100%)',
                   WebkitBackgroundClip: 'text',
@@ -66,7 +68,7 @@ const NavBar = () => {
             </motion.div>
           </Link>
 
-          {/* Navigation Links - Terminal Style */}
+          {/* Navigation Links - Terminal Style - Desktop */}
           <div className="hidden md:flex items-center space-x-6">
             <Link 
               to="/about" 
@@ -150,14 +152,15 @@ const NavBar = () => {
             </Link>
           </div>
 
-          {/* CTA Button - HUD Style */}
+          {/* CTA Button & Mobile Menu - HUD Style */}
           <div className="flex items-center space-x-4">
+            {/* CTA Button - Desktop */}
             <Link 
               to="/demo" 
-              className="relative overflow-hidden px-5 py-2 rounded border border-cyan-500/50 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 hover:from-cyan-600/40 hover:to-blue-600/40 text-cyan-200 transition-all group"
+              className="hidden sm:block relative overflow-hidden px-4 sm:px-5 py-2 rounded border border-cyan-500/50 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 hover:from-cyan-600/40 hover:to-blue-600/40 text-cyan-200 transition-all group"
               style={{
                 fontFamily: "'Orbitron', sans-serif",
-                fontSize: '11px',
+                fontSize: '10px',
                 fontWeight: '600',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -190,8 +193,107 @@ const NavBar = () => {
                 }}
               />
             </Link>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded border border-cyan-500/30 bg-cyan-600/10 hover:bg-cyan-600/20 transition-all"
+              aria-label="Toggle menu"
+            >
+              <div className="w-6 h-6 flex flex-col justify-center gap-1.5">
+                <motion.span
+                  className="w-full h-[2px] bg-cyan-400 rounded"
+                  animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.span
+                  className="w-full h-[2px] bg-cyan-400 rounded"
+                  animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.span
+                  className="w-full h-[2px] bg-cyan-400 rounded"
+                  animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden overflow-hidden border-t border-cyan-500/20 bg-black/40 backdrop-blur-md"
+            >
+              <div className="py-4 space-y-2">
+                <Link
+                  to="/demo"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-2 terminal-font text-sm text-cyan-300 hover:text-cyan-200 hover:bg-cyan-500/10 transition-all"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: location.pathname === '/demo' ? '#06b6d4' : '#06b6d4'
+                  }}
+                >
+                  [DEMO]
+                </Link>
+                <Link
+                  to="/about"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-2 terminal-font text-sm text-cyan-300 hover:text-cyan-200 hover:bg-cyan-500/10 transition-all"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: location.pathname === '/about' ? '#06b6d4' : '#06b6d4'
+                  }}
+                >
+                  [ABOUT]
+                </Link>
+                <Link
+                  to="/pricing"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-2 terminal-font text-sm text-cyan-300 hover:text-cyan-200 hover:bg-cyan-500/10 transition-all"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: location.pathname === '/pricing' ? '#06b6d4' : '#06b6d4'
+                  }}
+                >
+                  [PRICING]
+                </Link>
+                <Link
+                  to="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-2 terminal-font text-sm text-cyan-300 hover:text-cyan-200 hover:bg-cyan-500/10 transition-all"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: location.pathname === '/contact' ? '#06b6d4' : '#06b6d4'
+                  }}
+                >
+                  [CONTACT]
+                </Link>
+                <Link
+                  to="/demo"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block mx-4 mt-4 px-4 py-2 rounded border border-cyan-500/50 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 text-cyan-200 text-center transition-all"
+                  style={{
+                    fontFamily: "'Orbitron', sans-serif",
+                    fontSize: '11px',
+                    fontWeight: '600',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  START {'>'}
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

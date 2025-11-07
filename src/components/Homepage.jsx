@@ -1126,9 +1126,9 @@ const Homepage = () => {
           <ParticleSystem count={20} />
             </div>
         
-        {/* System Status - Integrated as Floating Elements (No Box) */}
+        {/* System Status - Integrated as Floating Elements (No Box) - Hidden on Mobile */}
             <motion.div 
-          className="absolute top-20 right-6 z-50"
+          className="hidden sm:block absolute top-20 right-6 z-50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
@@ -1157,10 +1157,10 @@ const Homepage = () => {
         
         {/* ========== 4 CORNER CHAT SYSTEM ========== */}
         
-        {/* TOP LEFT: Data Silos Problem (Top Executives) */}
+        {/* TOP LEFT: Data Silos Problem (Top Executives) - Hidden on Mobile */}
               <motion.div 
           key={`chat-top-left-${heroCycle}`}
-          className="absolute"
+          className="hidden lg:block absolute"
           style={{
             top: '10%',
             left: '4%',
@@ -1246,10 +1246,10 @@ const Homepage = () => {
           </AnimatePresence>
               </motion.div>
 
-        {/* BOTTOM LEFT: Black Box AI Problem (Working Level) */}
+        {/* BOTTOM LEFT: Black Box AI Problem (Working Level) - Hidden on Mobile */}
               <motion.div 
           key={`chat-bottom-left-${heroCycle}`}
-          className="absolute"
+          className="hidden lg:block absolute"
           style={{
             bottom: '20%',
             left: '4%',
@@ -1335,10 +1335,10 @@ const Homepage = () => {
           </AnimatePresence>
             </motion.div>
 
-        {/* TOP RIGHT: Decision Tracking & Learning Problem */}
+        {/* TOP RIGHT: Decision Tracking & Learning Problem - Hidden on Mobile */}
             <motion.div 
           key={`chat-top-right-${heroCycle}`}
-          className="absolute"
+          className="hidden lg:block absolute"
           style={{
             top: '10%',
             right: '4%',
@@ -1424,10 +1424,10 @@ const Homepage = () => {
           </AnimatePresence>
         </motion.div>
               
-        {/* BOTTOM RIGHT: AI+Human Collaboration Need */}
+        {/* BOTTOM RIGHT: AI+Human Collaboration Need - Hidden on Mobile */}
             <motion.div 
           key={`chat-bottom-right-${heroCycle}`}
-          className="absolute"
+          className="hidden lg:block absolute"
           style={{
             bottom: '20%',
             right: '4%',
@@ -1517,9 +1517,9 @@ const Homepage = () => {
         {/* VANTAGE BRILLIANCE - Heroic Appearance - 21-24s */}
 
         <div 
-          className="absolute left-1/2 z-20"
+          className="absolute left-1/2 z-20 w-full"
           style={{ 
-            top: '38%',
+            top: '35%',
             transform: 'translateX(-50%)',
             perspective: '1000px'
           }}
@@ -1560,9 +1560,9 @@ const Homepage = () => {
           >
             {/* Main Text - Mostly Cyan with Minute Purple and Magenta at End */}
                 <motion.h1 
-              className="futuristic-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-5 relative text-center"
+              className="futuristic-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-3 sm:mb-5 relative text-center px-4"
               style={{
-                letterSpacing: '0.1em',
+                letterSpacing: '0.05em',
                 lineHeight: '1.2',
                 filter: 'drop-shadow(0 0 20px rgba(6, 182, 212, 1)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.8)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9))'
               }}
@@ -1597,9 +1597,9 @@ const Homepage = () => {
             
             {/* Subtitle - Constrained Width, Nice Enclosure - MUST BE NARROWER THAN VANTAGE BRILLIANCE */}
             <motion.div
-              className="mt-4 mx-auto"
+              className="mt-2 sm:mt-4 mx-auto px-4"
               style={{
-                maxWidth: '60%',
+                maxWidth: '85%',
                 width: 'fit-content'
               }}
               initial={{ opacity: 0, y: 15, scale: 0.95 }}
@@ -1615,7 +1615,7 @@ const Homepage = () => {
             >
               <div
                 style={{
-                  padding: '10px 16px',
+                  padding: '8px 12px',
                   background: 'rgba(6, 182, 212, 0.1)',
                   border: '1px solid rgba(6, 182, 212, 0.4)',
                   borderRadius: '6px',
@@ -1625,12 +1625,11 @@ const Homepage = () => {
                 }}
               >
                 <p 
-                  className="text-center"
+                  className="text-center text-xs sm:text-sm md:text-base"
                   style={{
                     fontFamily: "'Rajdhani', sans-serif",
-                    fontSize: '16px',
                     fontWeight: '400',
-                    lineHeight: '1.7',
+                    lineHeight: '1.6',
                     color: '#a5f3fc',
                     textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)',
                     margin: 0,
@@ -1646,22 +1645,22 @@ const Homepage = () => {
               </div>
               
         {/* Bottom-Center: CTA Panel */}
-        <div key={`cta-${heroCycle}`} className="absolute bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-10 max-w-xs">
+        <div key={`cta-${heroCycle}`} className="absolute bottom-4 sm:bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-10 w-full max-w-xs px-4">
               <motion.div 
             key={`cta-motion-${heroCycle}`}
             initial={{ opacity: 0, y: 40, x: 30, scale: 0.85, rotate: 1 }}
             animate={{ opacity: 1, y: 0, x: 0, scale: 1, rotate: 0 }}
             exit={{ opacity: 0, y: 40, x: 30, scale: 0.85, rotate: 1 }}
             transition={{ delay: 24.0, duration: 1.2, ease: "easeOut" }}
-            className="space-y-3"
+            className="space-y-2 sm:space-y-3"
           >
-            <div className="hud-border bg-black/40 backdrop-blur-sm rounded-lg px-3 py-3">
-              <h3 className="futuristic-heading text-sm sm:text-base mb-2 text-cyan-300">Ready to Make Decisions Together?</h3>
+            <div className="hud-border bg-black/40 backdrop-blur-sm rounded-lg px-3 py-2 sm:py-3">
+              <h3 className="futuristic-heading text-xs sm:text-sm md:text-base mb-2 text-cyan-300 text-center">Ready to Make Decisions Together?</h3>
                 <Link 
-                  to="/single-screen" 
-                className="hud-border bg-gradient-to-r from-cyan-600/40 to-blue-600/40 hover:from-cyan-600/60 hover:to-blue-600/60 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center transition-all hover:neural-glow futuristic-subheading text-sm terminal-font"
+                  to="/demo" 
+                className="hud-border bg-gradient-to-r from-cyan-600/40 to-blue-600/40 hover:from-cyan-600/60 hover:to-blue-600/60 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold flex items-center justify-center transition-all hover:neural-glow futuristic-subheading text-xs sm:text-sm terminal-font"
                 >
-                Start Journey <ArrowRight className="ml-2 h-4 w-4" />
+                Start Journey <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                 </Link>
                 </div>
               </motion.div>
