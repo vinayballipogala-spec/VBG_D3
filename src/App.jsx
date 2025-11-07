@@ -7,6 +7,11 @@ import PostDecisionWorkspace from './components/PostDecisionWorkspace';
 import AboutUs from './components/AboutUs';
 import Pricing from './components/Pricing';
 import Contact from './components/Contact';
+import Demo from './components/Demo';
+import DataIngestionDetail from './components/DataIngestionDetail';
+import CausalIntelligenceDetail from './components/CausalIntelligenceDetail';
+import DecisionCanvasDetail from './components/DecisionCanvasDetail';
+import DecisionTrackingDetail from './components/DecisionTrackingDetail';
 import DemoFlow from './components/DemoFlow';
 import SingleScreenInterface from './components/SingleScreenInterface';
 import DetailedWorkflowDemo from './components/DetailedWorkflowDemo';
@@ -26,6 +31,11 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/demo" element={<Demo />} />
+            <Route path="/data-ingestion" element={<DataIngestionDetail />} />
+            <Route path="/causal-intelligence" element={<CausalIntelligenceDetail />} />
+            <Route path="/decision-canvas-detail" element={<DecisionCanvasDetail />} />
+            <Route path="/decision-tracking" element={<DecisionTrackingDetail />} />
             <Route path="/demo-flow" element={<DemoFlow />} />
             <Route path="/single-screen" element={<SingleScreenInterface />} />
             <Route path="/detailed-workflow" element={<DetailedWorkflowDemo />} />

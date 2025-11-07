@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Check, ArrowRight, Users, Target, Brain } from 'lucide-react';
+import NavBar from './NavBar';
 
 const Pricing = () => {
   const plans = [
@@ -60,24 +61,9 @@ const Pricing = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <header className="bg-black/80 backdrop-blur-sm border-b border-blue-500/20 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-8">
-              <Link to="/" className="neural-text text-xl font-bold">DecisionIntelligence OS</Link>
-              <nav className="hidden md:flex space-x-6">
-                <Link to="/" className="text-gray-300 hover:text-blue-400 transition-colors">Home</Link>
-                <Link to="/dashboard" className="text-gray-300 hover:text-blue-400 transition-colors">Dashboard</Link>
-                <Link to="/about" className="text-gray-300 hover:text-blue-400 transition-colors">About</Link>
-                <Link to="/pricing" className="text-blue-400 border-b-2 border-blue-400 pb-1">Pricing</Link>
-                <Link to="/contact" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</Link>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Navigation */}
+      <NavBar />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div 
@@ -86,8 +72,13 @@ const Pricing = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl font-bold mb-6">
-            Simple, Transparent <span className="neural-text">Pricing</span>
+          <h1 className="text-4xl font-bold mb-6 futuristic-heading">
+            Simple, Transparent <span style={{
+              background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 30%, #8b5cf6 70%, #a855f7 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>Pricing</span>
           </h1>
           <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
             From $500K consulting projects to $5K intelligent systems. 

@@ -1,27 +1,13 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Brain, Target, Zap, Shield, Users, TrendingUp } from 'lucide-react';
+import NavBar from './NavBar';
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <header className="bg-black/80 backdrop-blur-sm border-b border-blue-500/20 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-8">
-              <Link to="/" className="neural-text text-xl font-bold">DecisionIntelligence OS</Link>
-              <nav className="hidden md:flex space-x-6">
-                <Link to="/" className="text-gray-300 hover:text-blue-400 transition-colors">Home</Link>
-                <Link to="/dashboard" className="text-gray-300 hover:text-blue-400 transition-colors">Dashboard</Link>
-                <Link to="/about" className="text-blue-400 border-b-2 border-blue-400 pb-1">About</Link>
-                <Link to="/pricing" className="text-gray-300 hover:text-blue-400 transition-colors">Pricing</Link>
-                <Link to="/contact" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</Link>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Navigation */}
+      <NavBar />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div 
@@ -30,8 +16,13 @@ const AboutUs = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl font-bold mb-6">
-            About <span className="neural-text">DecisionIntelligence OS</span>
+          <h1 className="text-4xl font-bold mb-6 futuristic-heading">
+            About <span style={{
+              background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 30%, #8b5cf6 70%, #a855f7 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>Vantage Brilliance</span>
           </h1>
           <p className="text-xl text-gray-300 leading-relaxed">
             We're building the world's first Decision Intelligence OS that combines causal AI, 
@@ -127,14 +118,14 @@ const AboutUs = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
-              to="/dashboard" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all hover:neural-glow"
+              to="/demo" 
+              className="bg-gradient-to-r from-cyan-600/40 to-blue-600/40 hover:from-cyan-600/60 hover:to-blue-600/60 text-white px-8 py-4 rounded-lg font-semibold transition-all hover:neural-glow futuristic-subheading border border-cyan-500/50"
             >
-              Start Your Free Analysis
+              Start Your Journey
             </Link>
             <Link 
               to="/contact" 
-              className="border border-blue-500 text-blue-400 hover:bg-blue-500/10 px-8 py-4 rounded-lg font-semibold transition-all"
+              className="border border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 px-8 py-4 rounded-lg font-semibold transition-all futuristic-subheading"
             >
               Get in Touch
             </Link>
