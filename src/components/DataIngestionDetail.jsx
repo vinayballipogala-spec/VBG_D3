@@ -565,106 +565,106 @@ const DataIngestionDetail = () => {
             className="bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-2xl border border-blue-500/30 overflow-hidden shadow-2xl"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 p-4 border-b border-blue-500/30">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Database className="h-5 w-5 text-blue-400" />
+            <div className="bg-gradient-to-r from-blue-600/30 to-cyan-600/30 p-5 sm:p-6 border-b-2 border-blue-500/40">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="bg-blue-500/30 rounded-xl p-3">
+                    <Database className="h-6 w-6 sm:h-8 sm:w-8 text-blue-300" />
+                  </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white">Data Connections Dashboard</h3>
-                    <p className="text-sm text-gray-400">5000+ Sources • Real-Time Sync</p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Data Connections Dashboard</h3>
+                    <p className="text-sm sm:text-base text-blue-200 font-medium">5000+ Sources • Real-Time Sync</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="text-right">
-                    <div className="text-xs text-gray-400">Active Connections</div>
-                    <div className="text-lg font-bold text-green-400">127</div>
-                  </div>
+                <div className="bg-green-500/20 rounded-xl px-5 py-3 border-2 border-green-500/40">
+                  <div className="text-xs sm:text-sm text-green-300 mb-1">Active Connections</div>
+                  <div className="text-2xl sm:text-3xl font-black text-green-400">127</div>
                 </div>
               </div>
             </div>
 
             {/* Content Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 p-3 sm:p-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 p-4 sm:p-6">
               {/* Left: Connected Sources */}
-              <div className="bg-black/40 rounded-xl p-4 border border-blue-500/20">
-                <div className="flex items-center gap-2 mb-3">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
-                  <h4 className="text-sm font-semibold text-white">Connected Sources</h4>
+              <div className="bg-black/50 rounded-2xl p-5 sm:p-6 border-2 border-blue-500/30 shadow-xl">
+                <div className="flex items-center gap-3 mb-4">
+                  <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-green-400" />
+                  <h4 className="text-base sm:text-lg font-bold text-white">Connected Sources</h4>
                 </div>
-                <div className="space-y-2">
-                  <div className="bg-blue-500/10 rounded-lg p-2 border border-blue-500/30 flex items-center justify-between">
-                    <span className="text-xs text-blue-300">Salesforce CRM</span>
-                    <span className="text-xs text-green-400">● Live</span>
+                <div className="space-y-3">
+                  <div className="bg-blue-500/20 rounded-xl p-3 sm:p-4 border-2 border-blue-500/40 flex items-center justify-between hover:bg-blue-500/30 transition-all">
+                    <span className="text-sm sm:text-base font-medium text-blue-200">Salesforce CRM</span>
+                    <span className="text-sm sm:text-base text-green-400 font-bold">● Live</span>
                   </div>
-                  <div className="bg-blue-500/10 rounded-lg p-2 border border-blue-500/30 flex items-center justify-between">
-                    <span className="text-xs text-blue-300">HubSpot Marketing</span>
-                    <span className="text-xs text-green-400">● Live</span>
+                  <div className="bg-blue-500/20 rounded-xl p-3 sm:p-4 border-2 border-blue-500/40 flex items-center justify-between hover:bg-blue-500/30 transition-all">
+                    <span className="text-sm sm:text-base font-medium text-blue-200">HubSpot Marketing</span>
+                    <span className="text-sm sm:text-base text-green-400 font-bold">● Live</span>
                   </div>
-                  <div className="bg-blue-500/10 rounded-lg p-2 border border-blue-500/30 flex items-center justify-between">
-                    <span className="text-xs text-blue-300">QuickBooks Finance</span>
-                    <span className="text-xs text-green-400">● Live</span>
+                  <div className="bg-blue-500/20 rounded-xl p-3 sm:p-4 border-2 border-blue-500/40 flex items-center justify-between hover:bg-blue-500/30 transition-all">
+                    <span className="text-sm sm:text-base font-medium text-blue-200">QuickBooks Finance</span>
+                    <span className="text-sm sm:text-base text-green-400 font-bold">● Live</span>
                   </div>
-                  <div className="bg-blue-500/10 rounded-lg p-2 border border-blue-500/30 flex items-center justify-between">
-                    <span className="text-xs text-blue-300">Google Analytics</span>
-                    <span className="text-xs text-green-400">● Live</span>
+                  <div className="bg-blue-500/20 rounded-xl p-3 sm:p-4 border-2 border-blue-500/40 flex items-center justify-between hover:bg-blue-500/30 transition-all">
+                    <span className="text-sm sm:text-base font-medium text-blue-200">Google Analytics</span>
+                    <span className="text-sm sm:text-base text-green-400 font-bold">● Live</span>
                   </div>
-                  <div className="bg-blue-500/10 rounded-lg p-2 border border-blue-500/30 flex items-center justify-between">
-                    <span className="text-xs text-blue-300">Zendesk Support</span>
-                    <span className="text-xs text-green-400">● Live</span>
+                  <div className="bg-blue-500/20 rounded-xl p-3 sm:p-4 border-2 border-blue-500/40 flex items-center justify-between hover:bg-blue-500/30 transition-all">
+                    <span className="text-sm sm:text-base font-medium text-blue-200">Zendesk Support</span>
+                    <span className="text-sm sm:text-base text-green-400 font-bold">● Live</span>
                   </div>
                 </div>
               </div>
 
               {/* Center: Real-Time Sync */}
-              <div className="bg-black/40 rounded-xl p-4 border border-cyan-500/20">
-                <div className="flex items-center gap-2 mb-3">
-                  <Zap className="h-4 w-4 text-cyan-400" />
-                  <h4 className="text-sm font-semibold text-white">Real-Time Sync</h4>
+              <div className="bg-black/50 rounded-2xl p-5 sm:p-6 border-2 border-cyan-500/30 shadow-xl">
+                <div className="flex items-center gap-3 mb-4">
+                  <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400" />
+                  <h4 className="text-base sm:text-lg font-bold text-white">Real-Time Sync</h4>
                 </div>
-                <div className="space-y-3">
-                  <div className="bg-cyan-500/10 rounded-lg p-3 border border-cyan-500/30">
-                    <div className="text-xs font-semibold text-cyan-300 mb-2">Sync Status</div>
-                    <div className="flex items-center justify-between text-xs mb-2">
-                      <span className="text-gray-400">Last Sync</span>
-                      <span className="text-green-400 font-bold">2 seconds ago</span>
+                <div className="space-y-4">
+                  <div className="bg-cyan-500/20 rounded-xl p-4 sm:p-5 border-2 border-cyan-500/40">
+                    <div className="text-sm sm:text-base font-bold text-cyan-200 mb-3">Sync Status</div>
+                    <div className="flex items-center justify-between text-sm sm:text-base mb-3">
+                      <span className="text-gray-300">Last Sync</span>
+                      <span className="text-green-400 font-bold text-lg">2 seconds ago</span>
                     </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-gray-400">Records Synced</span>
-                      <span className="text-cyan-300 font-bold">1.2M today</span>
+                    <div className="flex items-center justify-between text-sm sm:text-base">
+                      <span className="text-gray-300">Records Synced</span>
+                      <span className="text-cyan-300 font-bold text-lg">1.2M today</span>
                     </div>
                   </div>
-                  <div className="bg-cyan-500/10 rounded-lg p-3 border border-cyan-500/30">
-                    <div className="text-xs font-semibold text-cyan-300 mb-2">Data Flow</div>
-                    <div className="h-2 bg-cyan-500/20 rounded-full overflow-hidden">
-                      <div className="h-full bg-cyan-500 rounded-full animate-pulse" style={{ width: '85%' }}></div>
+                  <div className="bg-cyan-500/20 rounded-xl p-4 sm:p-5 border-2 border-cyan-500/40">
+                    <div className="text-sm sm:text-base font-bold text-cyan-200 mb-3">Data Flow</div>
+                    <div className="h-3 sm:h-4 bg-cyan-500/20 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full animate-pulse" style={{ width: '85%' }}></div>
                     </div>
-                    <div className="text-xs text-gray-400 mt-2">85% data processed</div>
+                    <div className="mt-2 text-xs sm:text-sm text-cyan-300/70">85% throughput</div>
                   </div>
                 </div>
               </div>
 
               {/* Right: Unified Schema */}
-              <div className="bg-black/40 rounded-xl p-4 border border-blue-500/20">
-                <div className="flex items-center gap-2 mb-3">
-                  <Database className="h-4 w-4 text-blue-400" />
-                  <h4 className="text-sm font-semibold text-white">Unified Data Layer</h4>
+              <div className="bg-black/50 rounded-2xl p-5 sm:p-6 border-2 border-purple-500/30 shadow-xl">
+                <div className="flex items-center gap-3 mb-4">
+                  <Database className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400" />
+                  <h4 className="text-base sm:text-lg font-bold text-white">Unified Data Layer</h4>
                 </div>
-                <div className="space-y-3">
-                  <div className="bg-blue-500/10 rounded-lg p-3 border border-blue-500/30">
-                    <div className="text-xs font-semibold text-blue-300 mb-2">Schema Mapping</div>
-                    <div className="text-xs text-gray-300 mb-1">• 127 schemas mapped</div>
-                    <div className="text-xs text-gray-300 mb-1">• 2,340 relationships detected</div>
-                    <div className="text-xs text-gray-300">• Auto-optimized queries</div>
+                <div className="space-y-4">
+                  <div className="bg-purple-500/20 rounded-xl p-4 sm:p-5 border-2 border-purple-500/40">
+                    <div className="text-sm sm:text-base font-bold text-purple-200 mb-3">Schema Mapping</div>
+                    <div className="text-sm sm:text-base text-purple-300 mb-2">• 127 schemas mapped</div>
+                    <div className="text-sm sm:text-base text-purple-300 mb-2">• 2,340 relationships detected</div>
+                    <div className="text-sm sm:text-base text-purple-300">• Auto-optimized queries</div>
                   </div>
-                  <div className="bg-blue-500/10 rounded-lg p-3 border border-blue-500/30">
-                    <div className="text-xs font-semibold text-blue-300 mb-2">Data Quality</div>
-                    <div className="flex items-center justify-between text-xs mb-1">
-                      <span className="text-gray-400">Completeness</span>
-                      <span className="text-green-400 font-bold">98%</span>
+                  <div className="bg-purple-500/20 rounded-xl p-4 sm:p-5 border-2 border-purple-500/40">
+                    <div className="text-sm sm:text-base font-bold text-purple-200 mb-3">Data Quality</div>
+                    <div className="flex items-center justify-between text-sm sm:text-base mb-2">
+                      <span className="text-gray-300">Completeness</span>
+                      <span className="text-green-400 font-bold text-lg">98%</span>
                     </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-gray-400">Accuracy</span>
-                      <span className="text-green-400 font-bold">99.2%</span>
+                    <div className="flex items-center justify-between text-sm sm:text-base">
+                      <span className="text-gray-300">Accuracy</span>
+                      <span className="text-green-400 font-bold text-lg">99.2%</span>
                     </div>
                   </div>
                 </div>

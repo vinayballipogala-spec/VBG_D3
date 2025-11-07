@@ -858,11 +858,15 @@ const Homepage = () => {
   const [heroCycle, setHeroCycle] = useState(0);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRef = useRef(null);
-  // State for 4 corner chats
+  // State for 4 corner chats (Desktop)
   const [topLeftChatIndex, setTopLeftChatIndex] = useState(0); // Data Silos
   const [bottomLeftChatIndex, setBottomLeftChatIndex] = useState(0); // Black Box AI
   const [topRightChatIndex, setTopRightChatIndex] = useState(0); // Decision Tracking
   const [bottomRightChatIndex, setBottomRightChatIndex] = useState(0); // AI+Human Collab
+  
+  // State for Mobile Chat Carousel
+  const [mobileChatIndex, setMobileChatIndex] = useState(0);
+  const [mobileMessageIndex, setMobileMessageIndex] = useState(0);
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
@@ -973,6 +977,76 @@ const Homepage = () => {
     ];
     return createChatLoop(messages, setBottomRightChatIndex, heroCycle);
   }, [heroCycle]);
+
+  // Mobile Chat Carousel - Auto-cycle through all 4 conversations
+  useEffect(() => {
+    // Only run on mobile screens
+    const isMobile = window.innerWidth < 1024;
+    if (!isMobile) return;
+
+    const mobileChatMessages = [
+      [ // Chat 0: Data Silos
+        "We're not meeting targets. Three departments working on the same problem. Duplicate efforts everywhere.",
+        "We have Salesforce, HubSpot, Analytics, Finance systems. But zero unified view. Decisions made in isolation.",
+        "Sales makes pricing decisions without seeing customer health. Product launches without market context. This is chaos.",
+        "What if we had one system that connects everything? One unified intelligence layer? Let's explore AI agents—they can do everything!"
+      ],
+      [ // Chat 1: Black Box
+        "AI is exciting! We started using it. Got proactive insights, predictions. Super cool.",
+        "But here's the problem: I need to explain to the CTO why AI recommended this pricing. I don't know. It's a black box.",
+        "Sometimes it's right, sometimes wrong. But we never understand WHY. How do I recommend this to leadership?",
+        "We wish we knew the causal reasons. Not just predictions. We need to understand the 'why' behind decisions."
+      ],
+      [ // Chat 2: Decision Tracking
+        "We made this exact pricing mistake last year. Why are we repeating it? No one remembers what worked.",
+        "$2.4M in duplicate efforts this quarter. Teams solving problems others already solved. We're not learning.",
+        "47% of decisions made without context from past decisions. We keep launching features that fail. No institutional memory.",
+        "What if we tracked every decision? Learned from outcomes? Built organizational intelligence over time?"
+      ],
+      [ // Chat 3: AI+Human
+        "I'm worried. Will AI replace me? Will I become irrelevant? Am I still learning and growing?",
+        "We need systems that nurture humans. Train us. Make us smarter. Not replace us. That's the future.",
+        "AI+Human collaboration—that's what works. We think together. AI amplifies our judgment. We learn from each other.",
+        "The best systems make humans better decision-makers. They preserve our judgment while giving us superhuman intelligence."
+      ]
+    ];
+
+    let messageTimer;
+    let chatTimer;
+    let currentChat = mobileChatIndex;
+    let currentMessage = mobileMessageIndex;
+
+    const cycleMessage = () => {
+      const messages = mobileChatMessages[currentChat];
+      if (!messages || messages.length === 0) return;
+      
+      // Calculate timing: typing time + display time
+      const messageText = messages[currentMessage] || '';
+      const typingTime = messageText.length * 60; // 60ms per character
+      const displayTime = 5000; // 5 seconds to read after typing completes
+      const totalTime = typingTime + displayTime;
+      
+      if (currentMessage < messages.length - 1) {
+        // Move to next message in current chat
+        messageTimer = setTimeout(() => {
+          setMobileMessageIndex(prev => prev + 1);
+        }, totalTime);
+      } else {
+        // Move to next chat after a brief pause
+        chatTimer = setTimeout(() => {
+          setMobileChatIndex(prev => (prev + 1) % 4);
+          setMobileMessageIndex(0);
+        }, totalTime + 3000); // 3 second pause before switching chats
+      }
+    };
+
+    cycleMessage();
+
+    return () => {
+      clearTimeout(messageTimer);
+      clearTimeout(chatTimer);
+    };
+  }, [mobileChatIndex, mobileMessageIndex]);
 
   const intelligenceModules = [
     {
@@ -1152,10 +1226,298 @@ const Homepage = () => {
             </motion.div>
             </div>
         </motion.div>
+        
+        {/* ========== MOBILE CHAT CAROUSEL - BETTER THAN DESKTOP ========== */}
+        {/* Mobile-Only: Full-Screen Swipeable Chat Experience */}
+        <div className="lg:hidden absolute inset-0 z-30 flex items-center justify-center px-4 pt-20 pb-32">
+          <motion.div
+            className="w-full max-w-md"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Mobile Chat Carousel Container */}
+            <div className="relative bg-black/60 backdrop-blur-xl rounded-3xl border-2 overflow-hidden shadow-2xl"
+              style={{
+                borderColor: [
+                  'rgba(245, 158, 11, 0.5)',
+                  'rgba(139, 92, 246, 0.5)',
+                  'rgba(236, 72, 153, 0.5)',
+                  'rgba(6, 182, 212, 0.5)'
+                ][mobileChatIndex],
+                boxShadow: `0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px ${[
+                  'rgba(245, 158, 11, 0.3)',
+                  'rgba(139, 92, 246, 0.3)',
+                  'rgba(236, 72, 153, 0.3)',
+                  'rgba(6, 182, 212, 0.3)'
+                ][mobileChatIndex]}`
+              }}
+            >
+              {/* Chat Header - Mobile */}
+              <div 
+                className="px-6 py-4 border-b"
+                style={{
+                  borderColor: [
+                    'rgba(245, 158, 11, 0.3)',
+                    'rgba(139, 92, 246, 0.3)',
+                    'rgba(236, 72, 153, 0.3)',
+                    'rgba(6, 182, 212, 0.3)'
+                  ][mobileChatIndex],
+                  background: `linear-gradient(to right, ${[
+                    'rgba(245, 158, 11, 0.2)',
+                    'rgba(139, 92, 246, 0.2)',
+                    'rgba(236, 72, 153, 0.2)',
+                    'rgba(6, 182, 212, 0.2)'
+                  ][mobileChatIndex]}, transparent)`
+                }}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <div 
+                    className="text-xs font-bold uppercase tracking-wider"
+                    style={{
+                      color: [
+                        '#f59e0b',
+                        '#8b5cf6',
+                        '#ec4899',
+                        '#06b6d4'
+                      ][mobileChatIndex],
+                      textShadow: `0 0 10px ${[
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(139, 92, 246, 0.8)',
+                        'rgba(236, 72, 153, 0.8)',
+                        'rgba(6, 182, 212, 0.8)'
+                      ][mobileChatIndex]}`,
+                      fontFamily: "'Orbitron', sans-serif"
+                    }}
+                  >
+                    {['EXECUTIVE BRIEFING', 'WORKING LEVEL', 'STRATEGY DISCUSSION', 'HUMAN CAPITAL'][mobileChatIndex]}
+                  </div>
+                  <div className="flex gap-1">
+                    {[0, 1, 2, 3].map((idx) => (
+                      <div
+                        key={idx}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          idx === mobileChatIndex ? 'w-6' : ''
+                        }`}
+                        style={{
+                          backgroundColor: idx === mobileChatIndex
+                            ? [
+                                '#f59e0b',
+                                '#8b5cf6',
+                                '#ec4899',
+                                '#06b6d4'
+                              ][mobileChatIndex]
+                            : 'rgba(255, 255, 255, 0.2)',
+                          boxShadow: idx === mobileChatIndex
+                            ? `0 0 10px ${[
+                                'rgba(245, 158, 11, 0.8)',
+                                'rgba(139, 92, 246, 0.8)',
+                                'rgba(236, 72, 153, 0.8)',
+                                'rgba(6, 182, 212, 0.8)'
+                              ][mobileChatIndex]}`
+                            : 'none'
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <h3 
+                  className="text-lg font-semibold text-white"
+                  style={{ fontFamily: "'Rajdhani', sans-serif" }}
+                >
+                  {[
+                    'Data Silos Problem',
+                    'Black Box AI Problem',
+                    'Decision Tracking Problem',
+                    'AI+Human Collaboration'
+                  ][mobileChatIndex]}
+                </h3>
+              </div>
+
+              {/* Chat Messages - Mobile */}
+              <div className="px-6 py-6 min-h-[280px] max-h-[400px] overflow-y-auto">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`mobile-chat-${mobileChatIndex}-${mobileMessageIndex}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="space-y-4">
+                      {/* Persona Message */}
+                      <div className="flex justify-start">
+                        <div 
+                          className="max-w-[85%] rounded-2xl px-5 py-4 backdrop-blur-sm"
+                          style={{
+                            background: 'rgba(255, 255, 255, 0.1)',
+                            border: `1px solid ${[
+                              'rgba(245, 158, 11, 0.3)',
+                              'rgba(139, 92, 246, 0.3)',
+                              'rgba(236, 72, 153, 0.3)',
+                              'rgba(6, 182, 212, 0.3)'
+                            ][mobileChatIndex]}`
+                          }}
+                        >
+                          <div 
+                            className="text-xs font-semibold mb-2"
+                            style={{
+                              color: [
+                                '#f59e0b',
+                                '#8b5cf6',
+                                '#ec4899',
+                                '#06b6d4'
+                              ][mobileChatIndex],
+                              fontFamily: "'Orbitron', sans-serif"
+                            }}
+                          >
+                            {[
+                              ['CEO', 'CTO', 'CMO', 'CTO'][mobileMessageIndex],
+                              'ANALYST',
+                              ['CFO', 'CEO', 'STRATEGY', 'CEO'][mobileMessageIndex],
+                              ['CHRO', 'STRATEGY', 'CEO', 'CHRO'][mobileMessageIndex]
+                            ][mobileChatIndex]} {'>'} {['SPEAKING...', 'RESPONDING...', 'JOINING...', 'PROPOSING...'][mobileMessageIndex]}
+                          </div>
+                          <p 
+                            className="text-white text-sm leading-relaxed"
+                            style={{ fontFamily: "'Rajdhani', sans-serif" }}
+                          >
+                            <TypingText
+                              text={[
+                                [
+                                  "We're not meeting targets. Three departments working on the same problem. Duplicate efforts everywhere.",
+                                  "We have Salesforce, HubSpot, Analytics, Finance systems. But zero unified view. Decisions made in isolation.",
+                                  "Sales makes pricing decisions without seeing customer health. Product launches without market context. This is chaos.",
+                                  "What if we had one system that connects everything? One unified intelligence layer? Let's explore AI agents—they can do everything!"
+                                ][mobileMessageIndex],
+                                [
+                                  "AI is exciting! We started using it. Got proactive insights, predictions. Super cool.",
+                                  "But here's the problem: I need to explain to the CTO why AI recommended this pricing. I don't know. It's a black box.",
+                                  "Sometimes it's right, sometimes wrong. But we never understand WHY. How do I recommend this to leadership?",
+                                  "We wish we knew the causal reasons. Not just predictions. We need to understand the 'why' behind decisions."
+                                ][mobileMessageIndex],
+                                [
+                                  "We made this exact pricing mistake last year. Why are we repeating it? No one remembers what worked.",
+                                  "$2.4M in duplicate efforts this quarter. Teams solving problems others already solved. We're not learning.",
+                                  "47% of decisions made without context from past decisions. We keep launching features that fail. No institutional memory.",
+                                  "What if we tracked every decision? Learned from outcomes? Built organizational intelligence over time?"
+                                ][mobileMessageIndex],
+                                [
+                                  "I'm worried. Will AI replace me? Will I become irrelevant? Am I still learning and growing?",
+                                  "We need systems that nurture humans. Train us. Make us smarter. Not replace us. That's the future.",
+                                  "AI+Human collaboration—that's what works. We think together. AI amplifies our judgment. We learn from each other.",
+                                  "The best systems make humans better decision-makers. They preserve our judgment while giving us superhuman intelligence."
+                                ][mobileMessageIndex]
+                              ][mobileChatIndex]}
+                              delay={0.3}
+                              speed={60}
+                              cycleKey={`mobile-${mobileChatIndex}-${mobileMessageIndex}-${heroCycle}`}
+                              showPrompt={false}
+                              textClassName=""
+                            />
+                          </p>
+                        </div>
+                      </div>
+                      
+                      {/* Vantage Brilliance Response - Mobile */}
+                      <motion.div 
+                        className="flex justify-end mt-4"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 2.5, duration: 0.6 }}
+                      >
+                        <div className="max-w-[85%] rounded-2xl px-5 py-4 backdrop-blur-sm bg-gradient-to-br from-cyan-500/50 via-blue-500/40 to-cyan-500/50 border border-cyan-400/50 shadow-lg">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Bot className="h-4 w-4 text-cyan-200" />
+                            <span className="text-xs font-semibold text-cyan-100" style={{ fontFamily: "'Orbitron', sans-serif" }}>VANTAGE BRILLIANCE</span>
+                          </div>
+                          <p 
+                            className="text-white text-sm leading-relaxed"
+                            style={{ fontFamily: "'Rajdhani', sans-serif" }}
+                          >
+                            <TypingText
+                              text={[
+                                [
+                                  "I connect all your data sources into one unified layer. See everything. Make decisions with full context.",
+                                  "Real-time sync from 5000+ sources. No more silos. One truth for everyone.",
+                                  "I show you the full picture—sales, marketing, finance, operations. All connected. All visible.",
+                                  "I'm the system that connects everything. One unified intelligence layer. Making decisions together."
+                                ][mobileMessageIndex],
+                                [
+                                  "I don't just predict—I explain WHY. Causal reasoning, not black box.",
+                                  "I show you the root causes behind every recommendation. Transparency built-in.",
+                                  "Here's why I recommend this: [shows causal chain]. You always know the reasoning.",
+                                  "Causal intelligence—you understand not just what, but WHY. Every time."
+                                ][mobileMessageIndex],
+                                [
+                                  "I track every decision. Learn from outcomes. Build your institutional memory.",
+                                  "Every decision you make, I remember. Every outcome, I learn from. No more repeating mistakes.",
+                                  "I create your organizational intelligence—what worked, what didn't, and why.",
+                                  "I'm your institutional memory. Learn from every decision. Get smarter over time."
+                                ][mobileMessageIndex],
+                                [
+                                  "I amplify human judgment. We decide together. AI + Human collaboration.",
+                                  "I make you a better decision-maker. AI enhances your judgment, doesn't replace it.",
+                                  "Together, we make better decisions. You bring judgment. I bring intelligence. Perfect combination.",
+                                  "The future is AI + Human collaboration. I make you superhuman while keeping you human."
+                                ][mobileMessageIndex]
+                              ][mobileChatIndex]}
+                              delay={2.8}
+                              speed={55}
+                              cycleKey={`mobile-vantage-${mobileChatIndex}-${mobileMessageIndex}-${heroCycle}`}
+                              showPrompt={false}
+                              textClassName=""
+                            />
+                          </p>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Swipe/Tap Indicator & Navigation */}
+              <div className="px-6 py-4 border-t bg-black/40 flex items-center justify-between">
+                <button
+                  onClick={() => {
+                    setMobileChatIndex((prev) => (prev - 1 + 4) % 4);
+                    setMobileMessageIndex(0);
+                  }}
+                  className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all border border-white/20"
+                >
+                  <span className="text-white text-sm">← Prev</span>
+                </button>
+                <div 
+                  className="text-xs flex items-center gap-2"
+                  style={{
+                    color: [
+                      'rgba(245, 158, 11, 0.6)',
+                      'rgba(139, 92, 246, 0.6)',
+                      'rgba(236, 72, 153, 0.6)',
+                      'rgba(6, 182, 212, 0.6)'
+                    ][mobileChatIndex],
+                    fontFamily: "'JetBrains Mono', monospace"
+                  }}
+                >
+                  {mobileChatIndex + 1} / 4
+                </div>
+                <button
+                  onClick={() => {
+                    setMobileChatIndex((prev) => (prev + 1) % 4);
+                    setMobileMessageIndex(0);
+                  }}
+                  className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all border border-white/20"
+                >
+                  <span className="text-white text-sm">Next →</span>
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
               
         {/* Story Flow: Sequential Animation - 30+ Second Loop (5 Videos) - Transmission Style */}
         
-        {/* ========== 4 CORNER CHAT SYSTEM ========== */}
+        {/* ========== 4 CORNER CHAT SYSTEM (DESKTOP ONLY) ========== */}
         
         {/* TOP LEFT: Data Silos Problem (Top Executives) - Hidden on Mobile */}
               <motion.div 
@@ -1644,8 +2006,8 @@ const Homepage = () => {
             </motion.div>
               </div>
               
-        {/* Bottom-Center: CTA Panel */}
-        <div key={`cta-${heroCycle}`} className="absolute bottom-4 sm:bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-10 w-full max-w-xs px-4">
+        {/* Bottom-Center: CTA Panel - Mobile Optimized */}
+        <div key={`cta-${heroCycle}`} className="absolute bottom-4 sm:bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-40 w-full max-w-xs px-4">
               <motion.div 
             key={`cta-motion-${heroCycle}`}
             initial={{ opacity: 0, y: 40, x: 30, scale: 0.85, rotate: 1 }}
@@ -1654,13 +2016,13 @@ const Homepage = () => {
             transition={{ delay: 24.0, duration: 1.2, ease: "easeOut" }}
             className="space-y-2 sm:space-y-3"
           >
-            <div className="hud-border bg-black/40 backdrop-blur-sm rounded-lg px-3 py-2 sm:py-3">
-              <h3 className="futuristic-heading text-xs sm:text-sm md:text-base mb-2 text-cyan-300 text-center">Ready to Make Decisions Together?</h3>
+            <div className="hud-border bg-black/60 backdrop-blur-md rounded-xl px-4 py-3 sm:py-4 border-2 border-cyan-500/50 shadow-2xl">
+              <h3 className="futuristic-heading text-sm sm:text-base md:text-lg mb-3 text-cyan-300 text-center font-bold">Ready to Make Decisions Together?</h3>
                 <Link 
                   to="/demo" 
-                className="hud-border bg-gradient-to-r from-cyan-600/40 to-blue-600/40 hover:from-cyan-600/60 hover:to-blue-600/60 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold flex items-center justify-center transition-all hover:neural-glow futuristic-subheading text-xs sm:text-sm terminal-font"
+                className="hud-border bg-gradient-to-r from-cyan-600/50 to-blue-600/50 hover:from-cyan-600/70 hover:to-blue-600/70 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold flex items-center justify-center transition-all hover:neural-glow futuristic-subheading text-sm sm:text-base terminal-font shadow-lg"
                 >
-                Start Journey <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                Start Journey <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Link>
                 </div>
               </motion.div>

@@ -565,98 +565,98 @@ const CausalIntelligenceDetail = () => {
             className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-2xl border border-purple-500/30 overflow-hidden shadow-2xl"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 p-4 border-b border-purple-500/30">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Brain className="h-5 w-5 text-purple-400" />
+            <div className="bg-gradient-to-r from-purple-600/30 to-pink-600/30 p-5 sm:p-6 border-b-2 border-purple-500/40">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="bg-purple-500/30 rounded-xl p-3">
+                    <Brain className="h-6 w-6 sm:h-8 sm:w-8 text-purple-300" />
+                  </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white">Causal Analysis Dashboard</h3>
-                    <p className="text-sm text-gray-400">Customer Churn Analysis • DoWhy + CausalNex</p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Causal Analysis Dashboard</h3>
+                    <p className="text-sm sm:text-base text-purple-200 font-medium">Customer Churn Analysis • DoWhy + CausalNex</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="text-right">
-                    <div className="text-xs text-gray-400">Confidence</div>
-                    <div className="text-lg font-bold text-purple-400">89%</div>
-                  </div>
+                <div className="bg-purple-500/20 rounded-xl px-5 py-3 border-2 border-purple-500/40">
+                  <div className="text-xs sm:text-sm text-purple-300 mb-1">Confidence</div>
+                  <div className="text-2xl sm:text-3xl font-black text-purple-400">89%</div>
                 </div>
               </div>
             </div>
 
             {/* Content Grid */}
-            <div className="grid md:grid-cols-3 gap-4 p-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 p-4 sm:p-6">
               {/* Left: Root Causes */}
-              <div className="bg-black/40 rounded-xl p-4 border border-purple-500/20">
-                <div className="flex items-center gap-2 mb-3">
-                  <AlertCircle className="h-4 w-4 text-purple-400" />
-                  <h4 className="text-sm font-semibold text-white">Root Causes Identified</h4>
+              <div className="bg-black/50 rounded-2xl p-5 sm:p-6 border-2 border-purple-500/30 shadow-xl">
+                <div className="flex items-center gap-3 mb-4">
+                  <AlertCircle className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400" />
+                  <h4 className="text-base sm:text-lg font-bold text-white">Root Causes Identified</h4>
                 </div>
-                <div className="space-y-3">
-                  <div className="bg-purple-500/10 rounded-lg p-3 border border-purple-500/30">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-semibold text-purple-300">Price Increase</span>
-                      <span className="text-xs text-red-400">High Impact</span>
+                <div className="space-y-4">
+                  <div className="bg-purple-500/20 rounded-xl p-4 sm:p-5 border-2 border-purple-500/40">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm sm:text-base font-bold text-purple-200">Price Increase</span>
+                      <span className="text-sm sm:text-base text-red-400 font-bold">High Impact</span>
                     </div>
-                    <div className="text-xs text-gray-300 mb-1">Causal Strength: 89%</div>
-                    <div className="text-xs text-gray-400">Causes 3x higher churn risk</div>
-                    <div className="h-1.5 bg-purple-500/20 rounded-full overflow-hidden mt-2">
-                      <div className="h-full bg-red-500 rounded-full" style={{ width: '89%' }}></div>
+                    <div className="text-sm sm:text-base text-gray-200 mb-2">Causal Strength: 89%</div>
+                    <div className="text-sm sm:text-base text-gray-300 mb-3">Causes 3x higher churn risk</div>
+                    <div className="h-3 sm:h-4 bg-purple-500/20 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full" style={{ width: '89%' }}></div>
                     </div>
                   </div>
-                  <div className="bg-purple-500/10 rounded-lg p-3 border border-purple-500/30">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-semibold text-purple-300">Support Response Time</span>
-                      <span className="text-xs text-yellow-400">Medium Impact</span>
+                  <div className="bg-purple-500/20 rounded-xl p-4 sm:p-5 border-2 border-purple-500/40">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm sm:text-base font-bold text-purple-200">Support Response Time</span>
+                      <span className="text-sm sm:text-base text-yellow-400 font-bold">Medium Impact</span>
                     </div>
-                    <div className="text-xs text-gray-300 mb-1">Causal Strength: 67%</div>
-                    <div className="text-xs text-gray-400">Correlated but not causal</div>
-                    <div className="h-1.5 bg-purple-500/20 rounded-full overflow-hidden mt-2">
-                      <div className="h-full bg-yellow-500 rounded-full" style={{ width: '67%' }}></div>
+                    <div className="text-sm sm:text-base text-gray-200 mb-2">Causal Strength: 67%</div>
+                    <div className="text-sm sm:text-base text-gray-300 mb-3">Correlated but not causal</div>
+                    <div className="h-3 sm:h-4 bg-purple-500/20 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full" style={{ width: '67%' }}></div>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Center: Causal Graph */}
-              <div className="bg-black/40 rounded-xl p-4 border border-pink-500/20">
-                <div className="flex items-center gap-2 mb-3">
-                  <Brain className="h-4 w-4 text-pink-400" />
-                  <h4 className="text-sm font-semibold text-white">Causal Relationships</h4>
+              <div className="bg-black/50 rounded-2xl p-5 sm:p-6 border-2 border-pink-500/30 shadow-xl">
+                <div className="flex items-center gap-3 mb-4">
+                  <Brain className="h-5 w-5 sm:h-6 sm:w-6 text-pink-400" />
+                  <h4 className="text-base sm:text-lg font-bold text-white">Causal Relationships</h4>
                 </div>
-                <div className="space-y-3">
-                  <div className="bg-pink-500/10 rounded-lg p-3 border border-pink-500/30">
-                    <div className="text-xs font-semibold text-pink-300 mb-2">Causal Chain</div>
-                    <div className="text-xs text-gray-300 mb-1">Price Increase →</div>
-                    <div className="text-xs text-pink-400 mb-1">↓ (89% strength)</div>
-                    <div className="text-xs text-gray-300 mb-1">Customer Dissatisfaction →</div>
-                    <div className="text-xs text-pink-400 mb-1">↓ (76% strength)</div>
-                    <div className="text-xs text-red-400 font-semibold">Churn</div>
+                <div className="space-y-4">
+                  <div className="bg-pink-500/20 rounded-xl p-4 sm:p-5 border-2 border-pink-500/40">
+                    <div className="text-sm sm:text-base font-bold text-pink-200 mb-3">Causal Chain</div>
+                    <div className="text-sm sm:text-base text-gray-200 mb-2">Price Increase →</div>
+                    <div className="text-sm sm:text-base text-pink-400 mb-2">↓ (89% strength)</div>
+                    <div className="text-sm sm:text-base text-gray-200 mb-2">Customer Dissatisfaction →</div>
+                    <div className="text-sm sm:text-base text-pink-400 mb-2">↓ (76% strength)</div>
+                    <div className="text-base sm:text-lg text-red-400 font-bold">Churn</div>
                   </div>
-                  <div className="bg-pink-500/10 rounded-lg p-3 border border-pink-500/30">
-                    <div className="text-xs font-semibold text-pink-300 mb-2">Analysis Method</div>
-                    <div className="text-xs text-gray-300">• DoWhy: Causal inference</div>
-                    <div className="text-xs text-gray-300">• CausalNex: Graph structure</div>
-                    <div className="text-xs text-green-400 mt-1">✓ True causation identified</div>
+                  <div className="bg-pink-500/20 rounded-xl p-4 sm:p-5 border-2 border-pink-500/40">
+                    <div className="text-sm sm:text-base font-bold text-pink-200 mb-3">Analysis Method</div>
+                    <div className="text-sm sm:text-base text-gray-200 mb-2">• DoWhy: Causal inference</div>
+                    <div className="text-sm sm:text-base text-gray-200 mb-2">• CausalNex: Graph structure</div>
+                    <div className="text-sm sm:text-base text-green-400 mt-2 font-semibold">✓ True causation identified</div>
                   </div>
                 </div>
               </div>
 
               {/* Right: Insights */}
-              <div className="bg-black/40 rounded-xl p-4 border border-purple-500/20">
-                <div className="flex items-center gap-2 mb-3">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
-                  <h4 className="text-sm font-semibold text-white">Actionable Insights</h4>
+              <div className="bg-black/50 rounded-2xl p-5 sm:p-6 border-2 border-green-500/30 shadow-xl">
+                <div className="flex items-center gap-3 mb-4">
+                  <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-green-400" />
+                  <h4 className="text-base sm:text-lg font-bold text-white">Actionable Insights</h4>
                 </div>
-                <div className="space-y-3">
-                  <div className="bg-green-500/10 rounded-lg p-3 border border-green-500/30">
-                    <div className="text-xs font-semibold text-green-300 mb-2">Recommendation</div>
-                    <div className="text-xs text-gray-300 mb-1">Fix pricing strategy first</div>
-                    <div className="text-xs text-gray-300">Expected impact: -73% churn risk</div>
+                <div className="space-y-4">
+                  <div className="bg-green-500/20 rounded-xl p-4 sm:p-5 border-2 border-green-500/40">
+                    <div className="text-sm sm:text-base font-bold text-green-200 mb-3">Recommendation</div>
+                    <div className="text-sm sm:text-base text-gray-200 mb-2">Fix pricing strategy first</div>
+                    <div className="text-sm sm:text-base text-green-300 font-semibold">Expected impact: -73% churn risk</div>
                   </div>
-                  <div className="bg-purple-500/10 rounded-lg p-3 border border-purple-500/30">
-                    <div className="text-xs font-semibold text-purple-300 mb-2">Not a Cause</div>
-                    <div className="text-xs text-gray-300 mb-1">Support tickets: Correlation only</div>
-                    <div className="text-xs text-gray-400">Focus on root cause instead</div>
+                  <div className="bg-purple-500/20 rounded-xl p-4 sm:p-5 border-2 border-purple-500/40">
+                    <div className="text-sm sm:text-base font-bold text-purple-200 mb-3">Not a Cause</div>
+                    <div className="text-sm sm:text-base text-gray-200 mb-2">Support tickets: Correlation only</div>
+                    <div className="text-sm sm:text-base text-gray-300">Focus on root cause instead</div>
                   </div>
                 </div>
               </div>
