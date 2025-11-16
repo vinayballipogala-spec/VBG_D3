@@ -789,3 +789,4 @@ const DecisionCanvasDetail = () => {
 
 export default DecisionCanvasDetail;
 
+

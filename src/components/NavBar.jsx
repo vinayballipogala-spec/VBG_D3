@@ -150,6 +150,26 @@ const NavBar = () => {
                 }}
               />
             </Link>
+            <Link 
+              to="/prototype" 
+              className="terminal-font text-xs text-cyan-300 hover:text-cyan-200 transition-all relative group"
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                letterSpacing: '0.05em',
+                color: location.pathname === '/prototype' ? '#06b6d4' : '#06b6d4'
+              }}
+            >
+              <span className="relative z-10">[PROTOTYPE]</span>
+              <motion.div
+                className="absolute -bottom-1 left-0 h-[1px] bg-cyan-400"
+                initial={{ width: location.pathname === '/prototype' ? '100%' : 0 }}
+                whileHover={{ width: '100%' }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  boxShadow: '0 0 5px rgba(6, 182, 212, 0.8)'
+                }}
+              />
+            </Link>
           </div>
 
           {/* CTA Button & Mobile Menu - HUD Style */}
@@ -242,6 +262,17 @@ const NavBar = () => {
                   }}
                 >
                   [DEMO]
+                </Link>
+                <Link
+                  to="/prototype"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-2 terminal-font text-sm text-cyan-300 hover:text-cyan-200 hover:bg-cyan-500/10 transition-all"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: location.pathname === '/prototype' ? '#06b6d4' : '#06b6d4'
+                  }}
+                >
+                  [PROTOTYPE]
                 </Link>
                 <Link
                   to="/about"

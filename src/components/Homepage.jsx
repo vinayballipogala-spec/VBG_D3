@@ -1230,11 +1230,11 @@ const Homepage = () => {
         {/* ========== MOBILE CHAT CAROUSEL - BETTER THAN DESKTOP ========== */}
         {/* Mobile-Only: Full-Screen Swipeable Chat Experience */}
         <div className="lg:hidden absolute inset-0 z-30 flex items-center justify-center px-4 pt-20 pb-32">
-          <motion.div
+            <motion.div 
             className="w-full max-w-md"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8 }}
           >
             {/* Mobile Chat Carousel Container */}
             <div className="relative bg-black/60 backdrop-blur-xl rounded-3xl border-2 overflow-hidden shadow-2xl"
@@ -1333,14 +1333,14 @@ const Homepage = () => {
                   ][mobileChatIndex]}
                 </h3>
               </div>
-
+              
               {/* Chat Messages - Mobile */}
               <div className="px-6 py-6 min-h-[280px] max-h-[400px] overflow-y-auto">
                 <AnimatePresence mode="wait">
-                  <motion.div
+              <motion.div 
                     key={`mobile-chat-${mobileChatIndex}-${mobileMessageIndex}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
                   >
@@ -1420,7 +1420,7 @@ const Homepage = () => {
                       </div>
                       
                       {/* Vantage Brilliance Response - Mobile */}
-                      <motion.div 
+              <motion.div 
                         className="flex justify-end mt-4"
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -1430,7 +1430,7 @@ const Homepage = () => {
                           <div className="flex items-center gap-2 mb-2">
                             <Bot className="h-4 w-4 text-cyan-200" />
                             <span className="text-xs font-semibold text-cyan-100" style={{ fontFamily: "'Orbitron', sans-serif" }}>VANTAGE BRILLIANCE</span>
-                          </div>
+                </div>
                           <p 
                             className="text-white text-sm leading-relaxed"
                             style={{ fontFamily: "'Rajdhani', sans-serif" }}
@@ -1469,10 +1469,10 @@ const Homepage = () => {
                               textClassName=""
                             />
                           </p>
-                        </div>
+                </div>
                       </motion.div>
-                    </div>
-                  </motion.div>
+                </div>
+              </motion.div>
                 </AnimatePresence>
               </div>
 
@@ -1512,7 +1512,7 @@ const Homepage = () => {
                 </button>
               </div>
             </div>
-          </motion.div>
+            </motion.div>
         </div>
               
         {/* Story Flow: Sequential Animation - 30+ Second Loop (5 Videos) - Transmission Style */}
@@ -1520,7 +1520,7 @@ const Homepage = () => {
         {/* ========== 4 CORNER CHAT SYSTEM (DESKTOP ONLY) ========== */}
         
         {/* TOP LEFT: Data Silos Problem (Top Executives) - Hidden on Mobile */}
-              <motion.div 
+            <motion.div 
           key={`chat-top-left-${heroCycle}`}
           className="hidden lg:block absolute"
           style={{
@@ -1567,7 +1567,7 @@ const Homepage = () => {
                   maxWidth: '280px'
                 }}
                 initial={{ opacity: 0, x: -40 }}
-                animate={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.8 }}
               >
@@ -1626,8 +1626,8 @@ const Homepage = () => {
             zIndex: 9,
             pointerEvents: 'none'
           }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
           transition={{ delay: 1.0, duration: 1.0 }}
         >
           <motion.div style={{
@@ -1747,7 +1747,7 @@ const Homepage = () => {
                 initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 40 }}
-                transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8 }}
               >
                 <div style={{ padding: '8px 0' }}>
                   <div style={{
@@ -1780,12 +1780,12 @@ const Homepage = () => {
                       textClassName=""
                     />
                   </p>
-        </div>
+              </div>
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.div>
-              
+            </motion.div>
+
         {/* BOTTOM RIGHT: AI+Human Collaboration Need - Hidden on Mobile */}
             <motion.div 
           key={`chat-bottom-right-${heroCycle}`}
@@ -1868,8 +1868,8 @@ const Homepage = () => {
                       showPrompt={false}
                       textClassName=""
                     />
-                  </p>
-                </div>
+                </p>
+              </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -1886,7 +1886,7 @@ const Homepage = () => {
             perspective: '1000px'
           }}
             >
-              <motion.div 
+                  <motion.div 
             key={`vantage-${heroCycle}`}
             initial={{ 
               opacity: 0,
@@ -2001,10 +2001,10 @@ const Homepage = () => {
                 >
                   I connect your data, uncover why, propose options, help you execute, and learn with you—<span style={{ fontWeight: '500', color: '#06b6d4', textShadow: '0 0 5px rgba(6, 182, 212, 0.7)' }}>so every decision gets easier.</span>
                 </p>
-          </div>
-            </motion.div>
-            </motion.div>
               </div>
+            </motion.div>
+            </motion.div>
+          </div>
               
         {/* Bottom-Center: CTA Panel - Mobile Optimized */}
         <div key={`cta-${heroCycle}`} className="absolute bottom-4 sm:bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-40 w-full max-w-xs px-4">
@@ -2024,7 +2024,7 @@ const Homepage = () => {
                 >
                 Start Journey <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Link>
-                </div>
+        </div>
               </motion.div>
         </div>
         
@@ -2038,7 +2038,7 @@ const Homepage = () => {
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent z-20 pointer-events-none" />
         
         {/* Customer Intelligence Video Background - Unified Treatment */}
-            <motion.div 
+          <motion.div 
           className="absolute inset-0 opacity-25 overflow-hidden z-0"
                 initial={{ opacity: 0 }}
           whileInView={{ opacity: 0.25 }}
@@ -2083,16 +2083,16 @@ const Homepage = () => {
             className="text-center mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
             <h2 className="futuristic-heading text-xl lg:text-2xl mb-2">
               SIX <span className="neural-text">INTELLIGENCE MODULES</span>
-                </h2>
+            </h2>
             <p className="futuristic-body text-xs text-gray-300 max-w-2xl mx-auto">
               Comprehensive intelligence across every major business function.
             </p>
-            </motion.div>
+          </motion.div>
 
           {/* Tabbed Interface: Left Tabs + Right Chat */}
           <div className="grid lg:grid-cols-[300px_1fr] gap-5 min-h-[480px]">
@@ -2156,12 +2156,12 @@ const Homepage = () => {
                   </motion.button>
                 );
               })}
-              </div>
+            </div>
 
             {/* Right Side: Chat Interface */}
             <div className="relative">
               <ModuleChatDisplay moduleId={selectedModule} modules={intelligenceModules} />
-            </div>
+                    </div>
           </div>
         </div>
       </section>
@@ -2561,7 +2561,7 @@ const Homepage = () => {
                           {/* Step Number Badge */}
                           <div className="absolute -top-2 -right-2 w-10 h-10 bg-black/80 backdrop-blur-lg rounded-full flex items-center justify-center shadow-xl border-2 border-white/30 z-20">
                             <span className="text-white font-bold text-xs">{item.step}</span>
-                          </div>
+                  </div>
                           
                           {/* Pulsing Glow */}
                           <motion.div 
@@ -2576,7 +2576,7 @@ const Homepage = () => {
                               ease: "easeInOut" 
                             }}
                           />
-                        </div>
+                </div>
                   </motion.div>
                       
                       {/* Text Content */}
@@ -2586,15 +2586,15 @@ const Homepage = () => {
                           </h3>
                         <div className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-blue-500/30 mb-2">
                           <span className="text-xs text-blue-300 font-semibold">{item.highlight}</span>
-                        </div>
+                  </div>
                         <p className="futuristic-body text-xs text-gray-300 leading-relaxed">
                           {item.description}
                         </p>
-                      </div>
+                  </div>
                       
                       {/* Timeline Dot */}
                       <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full border-2 border-black shadow-xl z-10" />
-              </div>
+                </div>
                   </>
                 );
 
@@ -2757,7 +2757,7 @@ const Homepage = () => {
                   </motion.div>
                 );
               })}
-          </div>
+                  </div>
           
           {/* CTA to Demo Page */}
           <motion.div
@@ -2774,7 +2774,7 @@ const Homepage = () => {
               See Full Product Flow
               <ArrowRight className="h-5 w-5" />
             </Link>
-          </motion.div>
+            </motion.div>
         </div>
       </section>
 

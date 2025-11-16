@@ -16,6 +16,7 @@ import DemoFlow from './components/DemoFlow';
 import SingleScreenInterface from './components/SingleScreenInterface';
 import DetailedWorkflowDemo from './components/DetailedWorkflowDemo';
 import DecisionIntelligenceDemo from './components/DecisionIntelligenceDemo';
+import PharmaPrototype from './components/PharmaPrototype';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="/single-screen" element={<SingleScreenInterface />} />
             <Route path="/detailed-workflow" element={<DetailedWorkflowDemo />} />
             <Route path="/decision-intelligence-demo" element={<DecisionIntelligenceDemo />} />
+            <Route path="/prototype" element={<PharmaPrototype />} />
           </Routes>
         </div>
       </div>
