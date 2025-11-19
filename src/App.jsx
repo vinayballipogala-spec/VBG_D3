@@ -17,14 +17,18 @@ import SingleScreenInterface from './components/SingleScreenInterface';
 import DetailedWorkflowDemo from './components/DetailedWorkflowDemo';
 import DecisionIntelligenceDemo from './components/DecisionIntelligenceDemo';
 import PharmaPrototype from './components/PharmaPrototype';
+import PitchDeck from './components/PitchDeck';
+import { useLocation } from 'react-router-dom';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isPitchDeck = location.pathname === '/pitch-deck';
+
   return (
-    <Router>
-      <div className="min-h-screen text-white relative">
-        <NeuralBackground />
-        <div className="relative z-10">
-          <Routes>
+    <div className="min-h-screen text-white relative">
+      {!isPitchDeck && <NeuralBackground />}
+      <div className="relative z-10">
+        <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/pre-decision" element={<PreDecisionWorkspace />} />
             <Route path="/decision-canvas" element={<DecisionCanvas />} />
@@ -42,9 +46,17 @@ function App() {
             <Route path="/detailed-workflow" element={<DetailedWorkflowDemo />} />
             <Route path="/decision-intelligence-demo" element={<DecisionIntelligenceDemo />} />
             <Route path="/prototype" element={<PharmaPrototype />} />
-          </Routes>
-        </div>
+            <Route path="/pitch-deck" element={<PitchDeck />} />
+        </Routes>
       </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

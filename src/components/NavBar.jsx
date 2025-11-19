@@ -170,6 +170,26 @@ const NavBar = () => {
                 }}
               />
             </Link>
+            <Link 
+              to="/pitch-deck" 
+              className="terminal-font text-xs text-purple-300 hover:text-purple-200 transition-all relative group"
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                letterSpacing: '0.05em',
+                color: location.pathname === '/pitch-deck' ? '#a855f7' : '#a855f7'
+              }}
+            >
+              <span className="relative z-10">[PITCH DECK]</span>
+              <motion.div
+                className="absolute -bottom-1 left-0 h-[1px] bg-purple-400"
+                initial={{ width: location.pathname === '/pitch-deck' ? '100%' : 0 }}
+                whileHover={{ width: '100%' }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  boxShadow: '0 0 5px rgba(168, 85, 247, 0.8)'
+                }}
+              />
+            </Link>
           </div>
 
           {/* CTA Button & Mobile Menu - HUD Style */}
@@ -273,6 +293,17 @@ const NavBar = () => {
                   }}
                 >
                   [PROTOTYPE]
+                </Link>
+                <Link
+                  to="/pitch-deck"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-2 terminal-font text-sm text-purple-300 hover:text-purple-200 hover:bg-purple-500/10 transition-all"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: location.pathname === '/pitch-deck' ? '#a855f7' : '#a855f7'
+                  }}
+                >
+                  [PITCH DECK]
                 </Link>
                 <Link
                   to="/about"
