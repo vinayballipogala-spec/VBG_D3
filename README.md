@@ -68,3 +68,24 @@ Simply run `npm run build` and deploy the `dist/` folder.
 Proprietary - Vantage Brilliance Group
 
 
+## Access Gate (Supabase)
+
+The prototype (`/prototype`) and pitch deck (`/pitch-deck`) routes are gated for email + mobile capture.
+
+1) Environment: copy `.env.example` to `.env` and set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
+2) Table: create a `leads` table with columns `id uuid default uuid_generate_v4() primary key`, `email text`, `phone text`, `context text`, `path text`, `created_at timestamptz default now()`.
+
+SQL example:
+```
+create extension if not exists "uuid-ossp";
+create table if not exists public.leads (
+  id uuid primary key default uuid_generate_v4(),
+  email text,
+  phone text,
+  context text,
+  path text,
+  created_at timestamptz default now()
+);
+```
+
+3) Run `npm install` to ensure `@supabase/supabase-js` is present.

@@ -19,6 +19,7 @@ import DecisionIntelligenceDemo from './components/DecisionIntelligenceDemo';
 import PharmaPrototype from './components/PharmaPrototype';
 import PitchDeck from './components/PitchDeck';
 import { useLocation } from 'react-router-dom';
+import Gate from './components/Gate';
 
 function AppContent() {
   const location = useLocation();
@@ -45,8 +46,22 @@ function AppContent() {
             <Route path="/single-screen" element={<SingleScreenInterface />} />
             <Route path="/detailed-workflow" element={<DetailedWorkflowDemo />} />
             <Route path="/decision-intelligence-demo" element={<DecisionIntelligenceDemo />} />
-            <Route path="/prototype" element={<PharmaPrototype />} />
-            <Route path="/pitch-deck" element={<PitchDeck />} />
+            <Route
+              path="/prototype"
+              element={
+                <Gate context="prototype">
+                  <PharmaPrototype />
+                </Gate>
+              }
+            />
+            <Route
+              path="/pitch-deck"
+              element={
+                <Gate context="pitch">
+                  <PitchDeck />
+                </Gate>
+              }
+            />
         </Routes>
       </div>
     </div>
