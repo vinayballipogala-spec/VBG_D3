@@ -87,7 +87,7 @@ const Gate = ({ context = 'prototype', children }) => {
 
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-sm text-gray-400 mb-2">Work Email</label>
+              <label className="block text-sm text-gray-400 mb-2">Email</label>
               <div className="flex items-center gap-2">
                 <Mail className="h-5 w-5 text-cyan-400" />
                 <input
@@ -95,7 +95,7 @@ const Gate = ({ context = 'prototype', children }) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className={fieldClasses}
-                  placeholder="you@company.com"
+                  placeholder="you@example.com"
                   autoComplete="email"
                 />
               </div>
